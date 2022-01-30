@@ -1,7 +1,8 @@
-# HamadaCraft-MC-Bot\n######Stats and leaderboard bot for HamadaCraft, powered by GBF
+# HamadaCraft-MC-Bot
+Stats and leaderboard bot for HamadaCraft, powered by GBF
 
 
-##Features: 
+Features: 
 - Tracks stats for users
 - Stats include => Mined, Custom, Picked, Killed & Killed By
 - Leaderboard for weekly challenges 
