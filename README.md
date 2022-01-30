@@ -1,5 +1,5 @@
-# HamadaCraft-MC-Bot
-######Stats and leaderboard bot for HamadaCraft, powered by GBF
+# HamadaCraft-MC-Bot\n######Stats and leaderboard bot for HamadaCraft, powered by GBF
+
 
 ##Features: 
 - Tracks stats for users
