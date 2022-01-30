@@ -37,6 +37,10 @@ const Ayato = require('../Admin/stats/57695b16-f306-3ec9-9df5-1b30e23fdb49.json'
 const Grep = require('../Admin/stats/e4f932e9-0985-3d11-a7ba-7de1928dfc26.json');
 const Majkr = require('../Admin/stats/f4c27a74-14ed-3488-9e65-27290fa2303e.json');
 const Wael = require('../Admin/stats/10490532-8061-3e58-a694-cb561cb00045.json');
+const eBoy = require('../Admin/stats/b62465a8-cb99-37a9-8d9f-4065ade1700d.json');
+const Raven = require('../Admin/stats/13701f61-3874-3e47-8c72-0572fd2cc8bf.json');
+const Samy = require("../Admin/stats/b3975b4c-2db5-36fc-8ef0-2340a6f933a6.json");
+const mombar = require('../Admin/stats/fbc2ad8d-a207-302e-9fe3-13167fc814a2.json');
 
 const randoStrings = require("randostrings");
 const random = new randoStrings
@@ -80,6 +84,18 @@ module.exports = class Statslash extends SlashCommand {
         }, {
           name: "firecristal",
           value: "firecristal"
+        }, {
+          name: "6RAVEN7",
+          value: "hazem"
+        }, {
+          name: "mombarr",
+          value: "mombar"
+        }, {
+          name: "eboy",
+          value: "eboy"
+        }, {
+          name: "yahiasamya7a",
+          value: "samy"
         }], //Goes on to 20
         type: "STRING",
         required: true
@@ -102,9 +118,6 @@ module.exports = class Statslash extends SlashCommand {
 
     const UserChoice = interaction.options.getString('user');
 
-    if (interaction.user.id !== '333644367539470337') return interaction.reply({
-      content: `Menu closed, dev only`
-    })
 
     //Settings
 
@@ -206,6 +219,14 @@ module.exports = class Statslash extends SlashCommand {
     let ItemsDropped
     let ItemsEnchanted
 
+    let EnderDragonK
+    let WitherK
+    let elderGuardianK
+    let EnderDragonBy
+    let WitherBy
+    let elderGuardianBy
+    let witherSkull
+    let SoulSand
 
     const NextPage = new MessageButton()
       .setCustomId('page2')
@@ -229,9 +250,14 @@ module.exports = class Statslash extends SlashCommand {
       .setLabel('Page 1')
       .setEmoji(`◀`)
       .setDisabled(true)
+    const BossesB = new MessageButton()
+      .setCustomId('bosses')
+      .setStyle('SECONDARY')
+      .setLabel('Bosses')
+      .setEmoji(McEmotes.Dragon)
 
-    const pageOneRow = new MessageActionRow().addComponents([pageOneD, NextPage])
-    const pageTwoRow = new MessageActionRow().addComponents([pageOne, NextPageD])
+    const pageOneRow = new MessageActionRow().addComponents([pageOneD, NextPage, BossesB])
+    const pageTwoRow = new MessageActionRow().addComponents([pageOne, NextPageD, BossesB])
 
     let target
 
@@ -258,6 +284,18 @@ module.exports = class Statslash extends SlashCommand {
     } else if (UserChoice === 'firecristal') {
       target = 'Wael'
       GamerTag = 'firecristal'
+    } else if (UserChoice === 'hazem') {
+      target = 'hazem',
+        GamerTag = '6RAVEN7'
+    } else if (UserChoice === 'mombar') {
+      target = 'mombar',
+        GamerTag = 'mombarr'
+    } else if (UserChoice === 'eboy') {
+      target = 'eboy'
+      GamerTag = 'eboy'
+    } else if (UserChoice === 'samy') {
+      target = 'samy'
+      GamerTag = 'yahiasamya7a'
     }
 
 
@@ -268,6 +306,10 @@ module.exports = class Statslash extends SlashCommand {
     const GrepStats = Grep.stats
     const MajkorStats = Majkr.stats
     const WaelStats = Wael.stats
+    const RavenStats = Raven.stats
+    const mombarStats = mombar.stats
+    const eBoyStats = eBoy.stats
+    const SamyStats = Samy.stats
 
     //Buttons 
     const MinedB = new MessageButton()
@@ -294,6 +336,7 @@ module.exports = class Statslash extends SlashCommand {
       .setCustomId('close')
       .setEmoji(emojis.ERROR)
       .setStyle('DANGER')
+
     const MainRow = new MessageActionRow().addComponents([MinedB, KilledB, CraftedB, MiscB, CloseMenuB])
     const CloseMenuR = new MessageActionRow().addComponents([CloseMenuB])
 
@@ -542,7 +585,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
 
@@ -680,7 +723,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
 
@@ -818,7 +861,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
             const Bunnysender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -954,7 +997,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
             const Bunnysender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -1090,7 +1133,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
 
@@ -1229,7 +1272,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
 
@@ -1368,7 +1411,562 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BminedE],
-              components: [goBackMined]
+              components: [goBackMined, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'hazem') {
+
+          try {
+
+            if (RavenStats['minecraft:mined'] !== undefined) {
+              ancientDebrisM = (RavenStats['minecraft:mined']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              NormalDiamondOre = Number(RavenStats['minecraft:mined']['minecraft:diamond_ore'] ?? '0')
+              DeepSlateDiamondOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_diamond_ore'] ?? '0')
+              NormalGoldOre = Number(RavenStats['minecraft:mined']['minecraft:gold_ore'] ?? '0')
+              DeepSlateGoldOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_gold_ore'] ?? '0')
+              NetherGoldOre = (RavenStats['minecraft:mined']['minecraft:nether_gold_ore'] ?? '0').toLocaleString()
+              NormalIronore = Number(RavenStats['minecraft:mined']['minecraft:iron_ore'] ?? '0')
+              DeepSlateIronOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_iron_ore'] ?? '0')
+              NormalCoalOre = Number(RavenStats['minecraft:mined']['minecraft:coal_ore'] ?? '0')
+              DeepSlateCoalOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_coal_ore'] ?? '0')
+              NormalLapizOre = Number(RavenStats['minecraft:mined']['minecraft:lapis_ore'] ?? '0')
+              DeepSlateLapizOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_lapis_ore'] ?? '0')
+              NormalRedStoneOre = Number(RavenStats['minecraft:mined']['minecraft:redstone_ore'] ?? '0')
+              DeepSlateRedtStoneOre = Number(RavenStats['minecraft:mined']['minecraft:deepslate_redstone_ore'] ?? '0')
+              NquartzOreM = (RavenStats['minecraft:mined']['minecraft:nether_quartz_ore'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisM = 0
+              NormalDiamondOre = 0
+              DeepSlateDiamondOre = 0
+              NetherGoldOre = 0
+              NormalIronore = 0
+              DeepSlateIronOre = 0
+              NormalCoalOre = 0
+              NormalLapizOre = 0
+              DeepSlateLapizOre = 0
+              NormalRedStoneOre = 0
+              DeepSlateRedtStoneOre = 0
+              NquartzOreM = 0
+              NormalGoldOre = 0
+              DeepSlateGoldOre = 0
+              NormalCoalOre = 0
+              DeepSlateCoalOre = 0
+            }
+            const CommonDiamondOre = (NormalDiamondOre + DeepSlateDiamondOre).toLocaleString()
+            const CommonGoldOre = (NormalGoldOre + DeepSlateGoldOre).toLocaleString()
+            const CommonIronOre = (NormalIronore + DeepSlateIronOre).toLocaleString()
+            const CommonCoalOre = (NormalCoalOre + DeepSlateCoalOre).toLocaleString()
+            const CommonLapizOre = (NormalLapizOre + DeepSlateLapizOre).toLocaleString()
+            const redstoneOreComm = (NormalRedStoneOre + DeepSlateRedtStoneOre).toLocaleString()
+
+            if (RavenStats['minecraft:picked_up'] !== undefined) {
+              ancientDebrisP = (RavenStats['minecraft:picked_up']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              diamondOreP = (RavenStats['minecraft:picked_up']['minecraft:diamond'] ?? '0').toLocaleString()
+              goldOreP = (RavenStats['minecraft:picked_up']['minecraft:raw_gold'] ?? '0').toLocaleString()
+              NgoldOreP = (RavenStats['minecraft:picked_up']['minecraft:gold_nugget'] ?? '0').toLocaleString()
+              ironOreP = (RavenStats['minecraft:picked_up']['minecraft:raw_iron'] ?? '0').toLocaleString()
+              coalOreP = (RavenStats['minecraft:picked_up']['minecraft:coal'] ?? '0').toLocaleString()
+              lapizOreP = (RavenStats['minecraft:picked_up']['minecraft:lapis_lazuli'] ?? '0').toLocaleString()
+              redstoneOreP = (RavenStats['minecraft:picked_up']['minecraft:redstone'] ?? '0').toLocaleString()
+              NquartzOreP = (RavenStats['minecraft:picked_up']['minecraft:quartz'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisP = 0
+              diamondOreP = 0
+              goldOreP = 0
+              NgoldOreP = 0
+              ironOreP = 0
+              coalOreP = 0
+              lapizOreP = 0
+              redstoneOreP = 0
+              NquartzOreP = 0
+            }
+
+            const BminedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mined & Picked Up`)
+              .addFields({
+                name: `${McEmotes.Netherite} Ancient Debris`,
+                value: `**-Mined >** ${ancientDebrisM}\n**-Picked Up >** ${ancientDebrisP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Diamond} Diamond Ore`,
+                value: `**-Mined >** ${CommonDiamondOre}\n**-Picked Up >** ${diamondOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Gold} Gold Ore`,
+                value: `**-Mined >** ${CommonGoldOre}\n**-Picked Up >** ${goldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.GoldNugget} Nether Gold Ore`,
+                value: `**-Mined >** ${NetherGoldOre}\n**-Picked Up >** ${NgoldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Iron} Iron Ore`,
+                value: `**-Mined >** ${CommonIronOre}\n**-Picked Up >** ${ironOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Coal} Coal Ore`,
+                value: `**-Mined >** ${CommonCoalOre}\n**-Picked Up >** ${coalOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Lapis} Lapiz Lazuli`,
+                value: `**-Mined >** ${CommonLapizOre}\n**-Picked Up >** ${lapizOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Redstone} Redstone`,
+                value: `**-Mined >** ${redstoneOreComm}\n**-Picked Up >** ${redstoneOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Quartz} Quartz`,
+                value: `**-Mined >** ${NquartzOreM}\n**-Picked Up >** ${NquartzOreP}`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BminedE],
+              components: [goBackMined, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+        } else if (target === 'mombar') {
+
+          try {
+
+            if (mombarStats['minecraft:mined'] !== undefined) {
+              ancientDebrisM = (mombarStats['minecraft:mined']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              NormalDiamondOre = Number(mombarStats['minecraft:mined']['minecraft:diamond_ore'] ?? '0')
+              DeepSlateDiamondOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_diamond_ore'] ?? '0')
+              NormalGoldOre = Number(mombarStats['minecraft:mined']['minecraft:gold_ore'] ?? '0')
+              DeepSlateGoldOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_gold_ore'] ?? '0')
+              NetherGoldOre = (mombarStats['minecraft:mined']['minecraft:nether_gold_ore'] ?? '0').toLocaleString()
+              NormalIronore = Number(mombarStats['minecraft:mined']['minecraft:iron_ore'] ?? '0')
+              DeepSlateIronOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_iron_ore'] ?? '0')
+              NormalCoalOre = Number(mombarStats['minecraft:mined']['minecraft:coal_ore'] ?? '0')
+              DeepSlateCoalOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_coal_ore'] ?? '0')
+              NormalLapizOre = Number(mombarStats['minecraft:mined']['minecraft:lapis_ore'] ?? '0')
+              DeepSlateLapizOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_lapis_ore'] ?? '0')
+              NormalRedStoneOre = Number(mombarStats['minecraft:mined']['minecraft:redstone_ore'] ?? '0')
+              DeepSlateRedtStoneOre = Number(mombarStats['minecraft:mined']['minecraft:deepslate_redstone_ore'] ?? '0')
+              NquartzOreM = (mombarStats['minecraft:mined']['minecraft:nether_quartz_ore'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisM = 0
+              NormalDiamondOre = 0
+              DeepSlateDiamondOre = 0
+              NetherGoldOre = 0
+              NormalIronore = 0
+              DeepSlateIronOre = 0
+              NormalCoalOre = 0
+              NormalLapizOre = 0
+              DeepSlateLapizOre = 0
+              NormalRedStoneOre = 0
+              DeepSlateRedtStoneOre = 0
+              NquartzOreM = 0
+              NormalGoldOre = 0
+              DeepSlateGoldOre = 0
+              NormalCoalOre = 0
+              DeepSlateCoalOre = 0
+            }
+            const CommonDiamondOre = (NormalDiamondOre + DeepSlateDiamondOre).toLocaleString()
+            const CommonGoldOre = (NormalGoldOre + DeepSlateGoldOre).toLocaleString()
+            const CommonIronOre = (NormalIronore + DeepSlateIronOre).toLocaleString()
+            const CommonCoalOre = (NormalCoalOre + DeepSlateCoalOre).toLocaleString()
+            const CommonLapizOre = (NormalLapizOre + DeepSlateLapizOre).toLocaleString()
+            const redstoneOreComm = (NormalRedStoneOre + DeepSlateRedtStoneOre).toLocaleString()
+
+            if (mombarStats['minecraft:picked_up'] !== undefined) {
+              ancientDebrisP = (mombarStats['minecraft:picked_up']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              diamondOreP = (mombarStats['minecraft:picked_up']['minecraft:diamond'] ?? '0').toLocaleString()
+              goldOreP = (mombarStats['minecraft:picked_up']['minecraft:raw_gold'] ?? '0').toLocaleString()
+              NgoldOreP = (mombarStats['minecraft:picked_up']['minecraft:gold_nugget'] ?? '0').toLocaleString()
+              ironOreP = (mombarStats['minecraft:picked_up']['minecraft:raw_iron'] ?? '0').toLocaleString()
+              coalOreP = (mombarStats['minecraft:picked_up']['minecraft:coal'] ?? '0').toLocaleString()
+              lapizOreP = (mombarStats['minecraft:picked_up']['minecraft:lapis_lazuli'] ?? '0').toLocaleString()
+              redstoneOreP = (mombarStats['minecraft:picked_up']['minecraft:redstone'] ?? '0').toLocaleString()
+              NquartzOreP = (mombarStats['minecraft:picked_up']['minecraft:quartz'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisP = 0
+              diamondOreP = 0
+              goldOreP = 0
+              NgoldOreP = 0
+              ironOreP = 0
+              coalOreP = 0
+              lapizOreP = 0
+              redstoneOreP = 0
+              NquartzOreP = 0
+            }
+
+            const BminedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mined & Picked Up`)
+              .addFields({
+                name: `${McEmotes.Netherite} Ancient Debris`,
+                value: `**-Mined >** ${ancientDebrisM}\n**-Picked Up >** ${ancientDebrisP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Diamond} Diamond Ore`,
+                value: `**-Mined >** ${CommonDiamondOre}\n**-Picked Up >** ${diamondOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Gold} Gold Ore`,
+                value: `**-Mined >** ${CommonGoldOre}\n**-Picked Up >** ${goldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.GoldNugget} Nether Gold Ore`,
+                value: `**-Mined >** ${NetherGoldOre}\n**-Picked Up >** ${NgoldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Iron} Iron Ore`,
+                value: `**-Mined >** ${CommonIronOre}\n**-Picked Up >** ${ironOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Coal} Coal Ore`,
+                value: `**-Mined >** ${CommonCoalOre}\n**-Picked Up >** ${coalOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Lapis} Lapiz Lazuli`,
+                value: `**-Mined >** ${CommonLapizOre}\n**-Picked Up >** ${lapizOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Redstone} Redstone`,
+                value: `**-Mined >** ${redstoneOreComm}\n**-Picked Up >** ${redstoneOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Quartz} Quartz`,
+                value: `**-Mined >** ${NquartzOreM}\n**-Picked Up >** ${NquartzOreP}`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BminedE],
+              components: [goBackMined, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'eboy') {
+
+          try {
+
+            if (eBoyStats['minecraft:mined'] !== undefined) {
+              ancientDebrisM = (eBoyStats['minecraft:mined']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              NormalDiamondOre = Number(eBoyStats['minecraft:mined']['minecraft:diamond_ore'] ?? '0')
+              DeepSlateDiamondOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_diamond_ore'] ?? '0')
+              NormalGoldOre = Number(eBoyStats['minecraft:mined']['minecraft:gold_ore'] ?? '0')
+              DeepSlateGoldOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_gold_ore'] ?? '0')
+              NetherGoldOre = (eBoyStats['minecraft:mined']['minecraft:nether_gold_ore'] ?? '0').toLocaleString()
+              NormalIronore = Number(eBoyStats['minecraft:mined']['minecraft:iron_ore'] ?? '0')
+              DeepSlateIronOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_iron_ore'] ?? '0')
+              NormalCoalOre = Number(eBoyStats['minecraft:mined']['minecraft:coal_ore'] ?? '0')
+              DeepSlateCoalOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_coal_ore'] ?? '0')
+              NormalLapizOre = Number(eBoyStats['minecraft:mined']['minecraft:lapis_ore'] ?? '0')
+              DeepSlateLapizOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_lapis_ore'] ?? '0')
+              NormalRedStoneOre = Number(eBoyStats['minecraft:mined']['minecraft:redstone_ore'] ?? '0')
+              DeepSlateRedtStoneOre = Number(eBoyStats['minecraft:mined']['minecraft:deepslate_redstone_ore'] ?? '0')
+              NquartzOreM = (eBoyStats['minecraft:mined']['minecraft:nether_quartz_ore'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisM = 0
+              NormalDiamondOre = 0
+              DeepSlateDiamondOre = 0
+              NetherGoldOre = 0
+              NormalIronore = 0
+              DeepSlateIronOre = 0
+              NormalCoalOre = 0
+              NormalLapizOre = 0
+              DeepSlateLapizOre = 0
+              NormalRedStoneOre = 0
+              DeepSlateRedtStoneOre = 0
+              NquartzOreM = 0
+              NormalGoldOre = 0
+              DeepSlateGoldOre = 0
+              NormalCoalOre = 0
+              DeepSlateCoalOre = 0
+            }
+            const CommonDiamondOre = (NormalDiamondOre + DeepSlateDiamondOre).toLocaleString()
+            const CommonGoldOre = (NormalGoldOre + DeepSlateGoldOre).toLocaleString()
+            const CommonIronOre = (NormalIronore + DeepSlateIronOre).toLocaleString()
+            const CommonCoalOre = (NormalCoalOre + DeepSlateCoalOre).toLocaleString()
+            const CommonLapizOre = (NormalLapizOre + DeepSlateLapizOre).toLocaleString()
+            const redstoneOreComm = (NormalRedStoneOre + DeepSlateRedtStoneOre).toLocaleString()
+
+            if (eBoyStats['minecraft:picked_up'] !== undefined) {
+              ancientDebrisP = (eBoyStats['minecraft:picked_up']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              diamondOreP = (eBoyStats['minecraft:picked_up']['minecraft:diamond'] ?? '0').toLocaleString()
+              goldOreP = (eBoyStats['minecraft:picked_up']['minecraft:raw_gold'] ?? '0').toLocaleString()
+              NgoldOreP = (eBoyStats['minecraft:picked_up']['minecraft:gold_nugget'] ?? '0').toLocaleString()
+              ironOreP = (eBoyStats['minecraft:picked_up']['minecraft:raw_iron'] ?? '0').toLocaleString()
+              coalOreP = (eBoyStats['minecraft:picked_up']['minecraft:coal'] ?? '0').toLocaleString()
+              lapizOreP = (eBoyStats['minecraft:picked_up']['minecraft:lapis_lazuli'] ?? '0').toLocaleString()
+              redstoneOreP = (eBoyStats['minecraft:picked_up']['minecraft:redstone'] ?? '0').toLocaleString()
+              NquartzOreP = (eBoyStats['minecraft:picked_up']['minecraft:quartz'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisP = 0
+              diamondOreP = 0
+              goldOreP = 0
+              NgoldOreP = 0
+              ironOreP = 0
+              coalOreP = 0
+              lapizOreP = 0
+              redstoneOreP = 0
+              NquartzOreP = 0
+            }
+
+            const BminedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mined & Picked Up`)
+              .addFields({
+                name: `${McEmotes.Netherite} Ancient Debris`,
+                value: `**-Mined >** ${ancientDebrisM}\n**-Picked Up >** ${ancientDebrisP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Diamond} Diamond Ore`,
+                value: `**-Mined >** ${CommonDiamondOre}\n**-Picked Up >** ${diamondOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Gold} Gold Ore`,
+                value: `**-Mined >** ${CommonGoldOre}\n**-Picked Up >** ${goldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.GoldNugget} Nether Gold Ore`,
+                value: `**-Mined >** ${NetherGoldOre}\n**-Picked Up >** ${NgoldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Iron} Iron Ore`,
+                value: `**-Mined >** ${CommonIronOre}\n**-Picked Up >** ${ironOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Coal} Coal Ore`,
+                value: `**-Mined >** ${CommonCoalOre}\n**-Picked Up >** ${coalOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Lapis} Lapiz Lazuli`,
+                value: `**-Mined >** ${CommonLapizOre}\n**-Picked Up >** ${lapizOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Redstone} Redstone`,
+                value: `**-Mined >** ${redstoneOreComm}\n**-Picked Up >** ${redstoneOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Quartz} Quartz`,
+                value: `**-Mined >** ${NquartzOreM}\n**-Picked Up >** ${NquartzOreP}`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BminedE],
+              components: [goBackMined, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'samy') {
+
+          try {
+
+            if (SamyStats['minecraft:mined'] !== undefined) {
+              ancientDebrisM = (SamyStats['minecraft:mined']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              NormalDiamondOre = Number(SamyStats['minecraft:mined']['minecraft:diamond_ore'] ?? '0')
+              DeepSlateDiamondOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_diamond_ore'] ?? '0')
+              NormalGoldOre = Number(SamyStats['minecraft:mined']['minecraft:gold_ore'] ?? '0')
+              DeepSlateGoldOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_gold_ore'] ?? '0')
+              NetherGoldOre = (SamyStats['minecraft:mined']['minecraft:nether_gold_ore'] ?? '0').toLocaleString()
+              NormalIronore = Number(SamyStats['minecraft:mined']['minecraft:iron_ore'] ?? '0')
+              DeepSlateIronOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_iron_ore'] ?? '0')
+              NormalCoalOre = Number(SamyStats['minecraft:mined']['minecraft:coal_ore'] ?? '0')
+              DeepSlateCoalOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_coal_ore'] ?? '0')
+              NormalLapizOre = Number(SamyStats['minecraft:mined']['minecraft:lapis_ore'] ?? '0')
+              DeepSlateLapizOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_lapis_ore'] ?? '0')
+              NormalRedStoneOre = Number(SamyStats['minecraft:mined']['minecraft:redstone_ore'] ?? '0')
+              DeepSlateRedtStoneOre = Number(SamyStats['minecraft:mined']['minecraft:deepslate_redstone_ore'] ?? '0')
+              NquartzOreM = (SamyStats['minecraft:mined']['minecraft:nether_quartz_ore'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisM = 0
+              NormalDiamondOre = 0
+              DeepSlateDiamondOre = 0
+              NetherGoldOre = 0
+              NormalIronore = 0
+              DeepSlateIronOre = 0
+              NormalCoalOre = 0
+              NormalLapizOre = 0
+              DeepSlateLapizOre = 0
+              NormalRedStoneOre = 0
+              DeepSlateRedtStoneOre = 0
+              NquartzOreM = 0
+              NormalGoldOre = 0
+              DeepSlateGoldOre = 0
+              NormalCoalOre = 0
+              DeepSlateCoalOre = 0
+            }
+            const CommonDiamondOre = (NormalDiamondOre + DeepSlateDiamondOre).toLocaleString()
+            const CommonGoldOre = (NormalGoldOre + DeepSlateGoldOre).toLocaleString()
+            const CommonIronOre = (NormalIronore + DeepSlateIronOre).toLocaleString()
+            const CommonCoalOre = (NormalCoalOre + DeepSlateCoalOre).toLocaleString()
+            const CommonLapizOre = (NormalLapizOre + DeepSlateLapizOre).toLocaleString()
+            const redstoneOreComm = (NormalRedStoneOre + DeepSlateRedtStoneOre).toLocaleString()
+
+            if (SamyStats['minecraft:picked_up'] !== undefined) {
+              ancientDebrisP = (SamyStats['minecraft:picked_up']['minecraft:ancient_debris'] ?? '0').toLocaleString()
+              diamondOreP = (SamyStats['minecraft:picked_up']['minecraft:diamond'] ?? '0').toLocaleString()
+              goldOreP = (SamyStats['minecraft:picked_up']['minecraft:raw_gold'] ?? '0').toLocaleString()
+              NgoldOreP = (SamyStats['minecraft:picked_up']['minecraft:gold_nugget'] ?? '0').toLocaleString()
+              ironOreP = (SamyStats['minecraft:picked_up']['minecraft:raw_iron'] ?? '0').toLocaleString()
+              coalOreP = (SamyStats['minecraft:picked_up']['minecraft:coal'] ?? '0').toLocaleString()
+              lapizOreP = (SamyStats['minecraft:picked_up']['minecraft:lapis_lazuli'] ?? '0').toLocaleString()
+              redstoneOreP = (SamyStats['minecraft:picked_up']['minecraft:redstone'] ?? '0').toLocaleString()
+              NquartzOreP = (SamyStats['minecraft:picked_up']['minecraft:quartz'] ?? '0').toLocaleString()
+            } else {
+              ancientDebrisP = 0
+              diamondOreP = 0
+              goldOreP = 0
+              NgoldOreP = 0
+              ironOreP = 0
+              coalOreP = 0
+              lapizOreP = 0
+              redstoneOreP = 0
+              NquartzOreP = 0
+            }
+
+            const BminedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for firecristal`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for firecristal || Mined & Picked Up`)
+              .addFields({
+                name: `${McEmotes.Netherite} Ancient Debris`,
+                value: `**-Mined >** ${ancientDebrisM}\n**-Picked Up >** ${ancientDebrisP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Diamond} Diamond Ore`,
+                value: `**-Mined >** ${CommonDiamondOre}\n**-Picked Up >** ${diamondOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Gold} Gold Ore`,
+                value: `**-Mined >** ${CommonGoldOre}\n**-Picked Up >** ${goldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.GoldNugget} Nether Gold Ore`,
+                value: `**-Mined >** ${NetherGoldOre}\n**-Picked Up >** ${NgoldOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Iron} Iron Ore`,
+                value: `**-Mined >** ${CommonIronOre}\n**-Picked Up >** ${ironOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Coal} Coal Ore`,
+                value: `**-Mined >** ${CommonCoalOre}\n**-Picked Up >** ${coalOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Lapis} Lapiz Lazuli`,
+                value: `**-Mined >** ${CommonLapizOre}\n**-Picked Up >** ${lapizOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Redstone} Redstone`,
+                value: `**-Mined >** ${redstoneOreComm}\n**-Picked Up >** ${redstoneOreP}`,
+                inline: true
+              }, {
+                name: `${McEmotes.Quartz} Quartz`,
+                value: `**-Mined >** ${NquartzOreM}\n**-Picked Up >** ${NquartzOreP}`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BminedE],
+              components: [goBackMined, CloseMenuR]
             })
           } catch (err) {
 
@@ -1519,7 +2117,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -1652,7 +2250,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -1785,7 +2383,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -1810,20 +2408,20 @@ module.exports = class Statslash extends SlashCommand {
 
           try {
 
-            if (YehiaStats['minecraft:killed'] !== undefined) {
-              zombieK = (YehiaStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
-              endermanK = (YehiaStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
-              skeliK = (YehiaStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
-              spiderK = (YehiaStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
-              witherSk = (YehiaStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
-              creeperK = (YehiaStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
-              chickenK = (YehiaStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
-              cowK = (YehiaStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
-              sheepK = (YehiaStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
-              pigK = (YehiaStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
-              codK = Number(YehiaStats['minecraft:killed']['minecraft:cod'] ?? '0')
-              salmonK = Number(YehiaStats['minecraft:killed']['minecraft:salmon'] ?? '0')
-              villagerK = (YehiaStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
+            if (AyatoStats['minecraft:killed'] !== undefined) {
+              zombieK = (AyatoStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
+              endermanK = (AyatoStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
+              skeliK = (AyatoStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
+              spiderK = (AyatoStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
+              witherSk = (AyatoStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              creeperK = (AyatoStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
+              chickenK = (AyatoStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
+              cowK = (AyatoStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
+              sheepK = (AyatoStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
+              pigK = (AyatoStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
+              codK = Number(AyatoStats['minecraft:killed']['minecraft:cod'] ?? '0')
+              salmonK = Number(AyatoStats['minecraft:killed']['minecraft:salmon'] ?? '0')
+              villagerK = (AyatoStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
             } else {
               zombieK = 0
               endermanK = 0
@@ -1840,8 +2438,8 @@ module.exports = class Statslash extends SlashCommand {
               villagerK = 0
             }
 
-            if (YehiaStats['minecraft:custom'] !== undefined) {
-              totalKilled = (YehiaStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
+            if (AyatoStats['minecraft:custom'] !== undefined) {
+              totalKilled = (AyatoStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
             } else {
               totalKilled = 0
             }
@@ -1849,9 +2447,9 @@ module.exports = class Statslash extends SlashCommand {
             const fishCombined = (codK + salmonK).toLocaleString()
 
             const BkilledE = new MessageEmbed()
-              .setTitle(`HamadaCraft user stats for XBabYoda`)
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
               .setColor(colors.DEFAULT)
-              .setDescription(`User stats for XBabYoda || Mobs killed`)
+              .setDescription(`User stats for ${GamerTag} || Mobs killed`)
               .addFields({
                 name: `**Type:**`,
                 value: `Hostile`
@@ -1918,7 +2516,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -2051,7 +2649,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -2183,7 +2781,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -2315,7 +2913,539 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BkilledE],
-              components: [goBackKilled]
+              components: [goBackKilled, CloseMenuR]
+            })
+          } catch (err) {
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+          }
+
+        } else if (target === 'hazem') {
+
+          try {
+
+            if (RavenStats['minecraft:killed'] !== undefined) {
+              zombieK = (RavenStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
+              endermanK = (RavenStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
+              skeliK = (RavenStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
+              spiderK = (RavenStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
+              witherSk = (RavenStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              creeperK = (RavenStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
+              chickenK = (RavenStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
+              cowK = (RavenStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
+              sheepK = (RavenStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
+              pigK = (RavenStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
+              codK = Number(RavenStats['minecraft:killed']['minecraft:cod'] ?? '0')
+              salmonK = Number(RavenStats['minecraft:killed']['minecraft:salmon'] ?? '0')
+              villagerK = (RavenStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
+            } else {
+              zombieK = 0
+              endermanK = 0
+              skeliK = 0
+              spiderK = 0
+              witherSk = 0
+              creeperK = 0
+              chickenK = 0
+              cowK = 0
+              sheepK = 0
+              pigK = 0
+              codK = 0
+              salmonK = 0
+              villagerK = 0
+            }
+
+            if (RavenStats['minecraft:custom'] !== undefined) {
+              totalKilled = (RavenStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
+            } else {
+              totalKilled = 0
+            }
+
+            const fishCombined = (codK + salmonK).toLocaleString()
+
+            const BkilledE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mobs killed`)
+              .addFields({
+                name: `**Type:**`,
+                value: `Hostile`
+              }, {
+                name: `${McEmotes.Zombie} Zombie`,
+                value: `**Kills: ${zombieK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Enderman} Enderman`,
+                value: `**Kills: ${endermanK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Skeleton} Skeleton`,
+                value: `**Kills: ${skeliK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Spider} Spider`,
+                value: `**Kills: ${spiderK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.WitherSkeleton} Wither Skeleton`,
+                value: `**Kills: ${witherSk}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Creeper} Creeper (Aww mann)`,
+                value: `**Kills: ${creeperK}**`,
+                inline: true
+              }, {
+                name: `**Type:**`,
+                value: `Passive`
+              }, {
+                name: `${McEmotes.Chicken} Chicken`,
+                value: `**Kills: ${chickenK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Cow} Cow`,
+                value: `**Kills: ${cowK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Sheep} Sheep`,
+                value: `**Kills: ${sheepK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pig} Pig`,
+                value: `**Kills: ${pigK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Fish} Fish (Combined)`,
+                value: `**Kills: ${fishCombined}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Villager} Villager`,
+                value: `**Kills: ${villagerK}**`,
+                inline: true
+              }, {
+                name: `**Total** mob kills:`,
+                value: `${totalKilled}`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BkilledE],
+              components: [goBackKilled, CloseMenuR]
+            })
+          } catch (err) {
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+          }
+
+        } else if (target === 'mombar') {
+
+          try {
+
+            if (mombarStats['minecraft:killed'] !== undefined) {
+              zombieK = (mombarStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
+              endermanK = (mombarStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
+              skeliK = (mombarStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
+              spiderK = (mombarStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
+              witherSk = (mombarStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              creeperK = (mombarStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
+              chickenK = (mombarStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
+              cowK = (mombarStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
+              sheepK = (mombarStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
+              pigK = (mombarStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
+              codK = Number(mombarStats['minecraft:killed']['minecraft:cod'] ?? '0')
+              salmonK = Number(mombarStats['minecraft:killed']['minecraft:salmon'] ?? '0')
+              villagerK = (mombarStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
+            } else {
+              zombieK = 0
+              endermanK = 0
+              skeliK = 0
+              spiderK = 0
+              witherSk = 0
+              creeperK = 0
+              chickenK = 0
+              cowK = 0
+              sheepK = 0
+              pigK = 0
+              codK = 0
+              salmonK = 0
+              villagerK = 0
+            }
+
+            if (mombarStats['minecraft:custom'] !== undefined) {
+              totalKilled = (mombarStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
+            } else {
+              totalKilled = 0
+            }
+
+            const fishCombined = (codK + salmonK).toLocaleString()
+
+            const BkilledE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mobs killed`)
+              .addFields({
+                name: `**Type:**`,
+                value: `Hostile`
+              }, {
+                name: `${McEmotes.Zombie} Zombie`,
+                value: `**Kills: ${zombieK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Enderman} Enderman`,
+                value: `**Kills: ${endermanK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Skeleton} Skeleton`,
+                value: `**Kills: ${skeliK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Spider} Spider`,
+                value: `**Kills: ${spiderK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.WitherSkeleton} Wither Skeleton`,
+                value: `**Kills: ${witherSk}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Creeper} Creeper (Aww mann)`,
+                value: `**Kills: ${creeperK}**`,
+                inline: true
+              }, {
+                name: `**Type:**`,
+                value: `Passive`
+              }, {
+                name: `${McEmotes.Chicken} Chicken`,
+                value: `**Kills: ${chickenK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Cow} Cow`,
+                value: `**Kills: ${cowK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Sheep} Sheep`,
+                value: `**Kills: ${sheepK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pig} Pig`,
+                value: `**Kills: ${pigK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Fish} Fish (Combined)`,
+                value: `**Kills: ${fishCombined}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Villager} Villager`,
+                value: `**Kills: ${villagerK}**`,
+                inline: true
+              }, {
+                name: `**Total** mob kills:`,
+                value: `${totalKilled}`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BkilledE],
+              components: [goBackKilled, CloseMenuR]
+            })
+          } catch (err) {
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+          }
+
+        } else if (target === 'eboy') {
+
+          try {
+
+            if (eBoyStats['minecraft:killed'] !== undefined) {
+              zombieK = (eBoyStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
+              endermanK = (eBoyStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
+              skeliK = (eBoyStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
+              spiderK = (eBoyStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
+              witherSk = (eBoyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              creeperK = (eBoyStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
+              chickenK = (eBoyStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
+              cowK = (eBoyStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
+              sheepK = (eBoyStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
+              pigK = (eBoyStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
+              codK = Number(eBoyStats['minecraft:killed']['minecraft:cod'] ?? '0')
+              salmonK = Number(eBoyStats['minecraft:killed']['minecraft:salmon'] ?? '0')
+              villagerK = (eBoyStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
+            } else {
+              zombieK = 0
+              endermanK = 0
+              skeliK = 0
+              spiderK = 0
+              witherSk = 0
+              creeperK = 0
+              chickenK = 0
+              cowK = 0
+              sheepK = 0
+              pigK = 0
+              codK = 0
+              salmonK = 0
+              villagerK = 0
+            }
+
+            if (eBoyStats['minecraft:custom'] !== undefined) {
+              totalKilled = (eBoyStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
+            } else {
+              totalKilled = 0
+            }
+
+            const fishCombined = (codK + salmonK).toLocaleString()
+
+            const BkilledE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mobs killed`)
+              .addFields({
+                name: `**Type:**`,
+                value: `Hostile`
+              }, {
+                name: `${McEmotes.Zombie} Zombie`,
+                value: `**Kills: ${zombieK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Enderman} Enderman`,
+                value: `**Kills: ${endermanK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Skeleton} Skeleton`,
+                value: `**Kills: ${skeliK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Spider} Spider`,
+                value: `**Kills: ${spiderK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.WitherSkeleton} Wither Skeleton`,
+                value: `**Kills: ${witherSk}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Creeper} Creeper (Aww mann)`,
+                value: `**Kills: ${creeperK}**`,
+                inline: true
+              }, {
+                name: `**Type:**`,
+                value: `Passive`
+              }, {
+                name: `${McEmotes.Chicken} Chicken`,
+                value: `**Kills: ${chickenK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Cow} Cow`,
+                value: `**Kills: ${cowK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Sheep} Sheep`,
+                value: `**Kills: ${sheepK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pig} Pig`,
+                value: `**Kills: ${pigK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Fish} Fish (Combined)`,
+                value: `**Kills: ${fishCombined}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Villager} Villager`,
+                value: `**Kills: ${villagerK}**`,
+                inline: true
+              }, {
+                name: `**Total** mob kills:`,
+                value: `${totalKilled}`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BkilledE],
+              components: [goBackKilled, CloseMenuR]
+            })
+          } catch (err) {
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+          }
+
+        } else if (target === 'samy') {
+
+          try {
+
+            if (SamyStats['minecraft:killed'] !== undefined) {
+              zombieK = (SamyStats['minecraft:killed']['minecraft:zombie'] ?? '0').toLocaleString()
+              endermanK = (SamyStats['minecraft:killed']['minecraft:enderman'] ?? '0').toLocaleString()
+              skeliK = (SamyStats['minecraft:killed']['minecraft:skeleton'] ?? '0').toLocaleString()
+              spiderK = (SamyStats['minecraft:killed']['minecraft:spider'] ?? '0').toLocaleString()
+              witherSk = (SamyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              creeperK = (SamyStats['minecraft:killed']['minecraft:creeper'] ?? '0').toLocaleString()
+              chickenK = (SamyStats['minecraft:killed']['minecraft:chicken'] ?? '0').toLocaleString()
+              cowK = (SamyStats['minecraft:killed']['minecraft:cow'] ?? '0').toLocaleString()
+              sheepK = (SamyStats['minecraft:killed']['minecraft:sheep'] ?? '0').toLocaleString()
+              pigK = (SamyStats['minecraft:killed']['minecraft:pig'] ?? '0').toLocaleString()
+              codK = Number(SamyStats['minecraft:killed']['minecraft:cod'] ?? '0')
+              salmonK = Number(SamyStats['minecraft:killed']['minecraft:salmon'] ?? '0')
+              villagerK = (SamyStats['minecraft:killed']['minecraft:villager'] ?? '0').toLocaleString()
+            } else {
+              zombieK = 0
+              endermanK = 0
+              skeliK = 0
+              spiderK = 0
+              witherSk = 0
+              creeperK = 0
+              chickenK = 0
+              cowK = 0
+              sheepK = 0
+              pigK = 0
+              codK = 0
+              salmonK = 0
+              villagerK = 0
+            }
+
+            if (SamyStats['minecraft:custom'] !== undefined) {
+              totalKilled = (SamyStats['minecraft:custom']['minecraft:mob_kills'] ?? '0').toLocaleString()
+            } else {
+              totalKilled = 0
+            }
+
+            const fishCombined = (codK + salmonK).toLocaleString()
+
+            const BkilledE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Mobs killed`)
+              .addFields({
+                name: `**Type:**`,
+                value: `Hostile`
+              }, {
+                name: `${McEmotes.Zombie} Zombie`,
+                value: `**Kills: ${zombieK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Enderman} Enderman`,
+                value: `**Kills: ${endermanK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Skeleton} Skeleton`,
+                value: `**Kills: ${skeliK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Spider} Spider`,
+                value: `**Kills: ${spiderK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.WitherSkeleton} Wither Skeleton`,
+                value: `**Kills: ${witherSk}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Creeper} Creeper (Aww mann)`,
+                value: `**Kills: ${creeperK}**`,
+                inline: true
+              }, {
+                name: `**Type:**`,
+                value: `Passive`
+              }, {
+                name: `${McEmotes.Chicken} Chicken`,
+                value: `**Kills: ${chickenK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Cow} Cow`,
+                value: `**Kills: ${cowK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Sheep} Sheep`,
+                value: `**Kills: ${sheepK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pig} Pig`,
+                value: `**Kills: ${pigK}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Fish} Fish (Combined)`,
+                value: `**Kills: ${fishCombined}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Villager} Villager`,
+                value: `**Kills: ${villagerK}**`,
+                inline: true
+              }, {
+                name: `**Total** mob kills:`,
+                value: `${totalKilled}`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BkilledE],
+              components: [goBackKilled, CloseMenuR]
             })
           } catch (err) {
             const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
@@ -2500,7 +3630,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -2674,7 +3804,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -2847,7 +3977,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -3020,7 +4150,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -3193,7 +4323,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -3366,7 +4496,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -3540,7 +4670,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [BcraftedE],
-              components: [goBackCrafted]
+              components: [goBackCrafted, CloseMenuR]
             })
           } catch (err) {
 
@@ -3562,6 +4692,706 @@ module.exports = class Statslash extends SlashCommand {
             return
 
           }
+        } else if (target === 'hazem') {
+
+
+          try {
+
+            if (RavenStats['minecraft:crafted'] !== undefined) {
+              NetheriteIngotCR = (RavenStats['minecraft:crafted']['minecraft:netherite_ingot'] ?? '0').toLocaleString()
+              N_Pickaxe = (RavenStats['minecraft:crafted']['minecraft:netherite_pickaxe'] ?? '0').toLocaleString()
+              N_Sword = (RavenStats['minecraft:crafted']['minecraft:netherite_sword'] ?? '0').toLocaleString()
+              N_Shovel = (RavenStats['minecraft:crafted']['minecraft:netherite_shovel'] ?? '0').toLocaleString()
+              N_Axe = (RavenStats['minecraft:crafted']['minecraft:netherite_axe'] ?? '0').toLocaleString()
+              D_Pickaxe = (RavenStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+              D_Sword = (RavenStats['minecraft:crafted']['minecraft:diamond_sword'] ?? '0').toLocaleString()
+              D_Shovel = (RavenStats['minecraft:crafted']['minecraft:diamond_shovel'] ?? '0').toLocaleString()
+              D_Axe = (RavenStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+
+              N_ChestPlate = (RavenStats['minecraft:crafted']['minecraft:netherite_chestplate'] ?? '0').toLocaleString()
+              N_Leggings = (RavenStats['minecraft:crafted']['minecraft:netherite_leggings'] ?? '0').toLocaleString()
+              N_Helmet = (RavenStats['minecraft:crafted']['minecraft:netherite_helmet'] ?? '0').toLocaleString()
+              N_Boots = (RavenStats['minecraft:crafted']['minecraft:netherite_boots'] ?? '0').toLocaleString()
+              D_ChestPlate = (RavenStats['minecraft:crafted']['minecraft:diamond_chestplate'] ?? '0').toLocaleString()
+              D_Leggings = (RavenStats['minecraft:crafted']['minecraft:diamond_leggings'] ?? '0').toLocaleString()
+              D_Helmet = (RavenStats['minecraft:crafted']['minecraft:diamond_helmet'] ?? '0').toLocaleString()
+              D_Boots = (RavenStats['minecraft:crafted']['minecraft:diamond_boots'] ?? '0').toLocaleString()
+
+            } else {
+              NetheriteIngotCR = 0
+              N_Pickaxe = 0
+              N_Sword = 0
+              N_Shovel = 0
+              N_Axe = 0
+              D_Pickaxe = 0
+              D_Sword = 0
+              D_Shovel = 0
+              D_Axe = 0
+              N_ChestPlate = 0
+              N_Leggings = 0
+              N_Helmet = 0
+              N_Boots = 0
+              D_ChestPlate = 0
+              D_Leggings = 0
+              D_Helmet = 0
+              D_Boots = 0
+            }
+
+
+            const BcraftedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Items crafted`)
+              .addFields({
+                name: `${McEmotes.N_Sword} Tools ${McEmotes.Pickaxe}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.Netherite} Netherite Ingots`,
+                value: `**Crafted > ${NetheriteIngotCR}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Pick} Netherite Pickaxe`,
+                value: `**Crafted > ${N_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Axe} Netherite Axe`,
+                value: `**Crafted > ${N_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Netherite Sword`,
+                value: `**Crafted > ${N_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Shovel} Netherite Shovel`,
+                value: `**Crafted > ${N_Shovel}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pickaxe} Diamond Pickaxe`,
+                value: `**Crafted > ${D_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Axe} Diamond Axe`,
+                value: `**Crafted > ${D_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Sword} Diamond Sword`,
+                value: `**Crafted > ${D_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Shovel} Diamond Shovel`,
+                value: `**Crafted > ${D_Shovel}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`
+              }, {
+                name: `\n${McEmotes.N_Helmet} Armor ${McEmotes.D_Boots}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.N_Helmet} Netherite Helmet`,
+                value: `**Crafted > ${N_Helmet}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Helmet} Diamond Helmet`,
+                value: `**Crafted > ${D_Helmet}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Chestplate} Netherite Chestplate`,
+                value: `**Crafted > ${N_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Chestplate} Diamond Chestplate`,
+                value: `**Crafted > ${D_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Leggings} Netherite Leggings`,
+                value: `**Crafted > ${N_Leggings}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Leggings} Diamond Leggings`,
+                value: `**Crafted > ${D_Leggings}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Boots} Netherite Boots`,
+                value: `**Crafted > ${N_Boots}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Boots} Diamond Boots`,
+                value: `**Crafted > ${D_Boots}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BcraftedE],
+              components: [goBackCrafted, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'mombar') {
+
+
+          try {
+
+            if (mombarStats['minecraft:crafted'] !== undefined) {
+              NetheriteIngotCR = (mombarStats['minecraft:crafted']['minecraft:netherite_ingot'] ?? '0').toLocaleString()
+              N_Pickaxe = (mombarStats['minecraft:crafted']['minecraft:netherite_pickaxe'] ?? '0').toLocaleString()
+              N_Sword = (mombarStats['minecraft:crafted']['minecraft:netherite_sword'] ?? '0').toLocaleString()
+              N_Shovel = (mombarStats['minecraft:crafted']['minecraft:netherite_shovel'] ?? '0').toLocaleString()
+              N_Axe = (mombarStats['minecraft:crafted']['minecraft:netherite_axe'] ?? '0').toLocaleString()
+              D_Pickaxe = (mombarStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+              D_Sword = (mombarStats['minecraft:crafted']['minecraft:diamond_sword'] ?? '0').toLocaleString()
+              D_Shovel = (mombarStats['minecraft:crafted']['minecraft:diamond_shovel'] ?? '0').toLocaleString()
+              D_Axe = (mombarStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+
+              N_ChestPlate = (mombarStats['minecraft:crafted']['minecraft:netherite_chestplate'] ?? '0').toLocaleString()
+              N_Leggings = (mombarStats['minecraft:crafted']['minecraft:netherite_leggings'] ?? '0').toLocaleString()
+              N_Helmet = (mombarStats['minecraft:crafted']['minecraft:netherite_helmet'] ?? '0').toLocaleString()
+              N_Boots = (mombarStats['minecraft:crafted']['minecraft:netherite_boots'] ?? '0').toLocaleString()
+              D_ChestPlate = (mombarStats['minecraft:crafted']['minecraft:diamond_chestplate'] ?? '0').toLocaleString()
+              D_Leggings = (mombarStats['minecraft:crafted']['minecraft:diamond_leggings'] ?? '0').toLocaleString()
+              D_Helmet = (mombarStats['minecraft:crafted']['minecraft:diamond_helmet'] ?? '0').toLocaleString()
+              D_Boots = (mombarStats['minecraft:crafted']['minecraft:diamond_boots'] ?? '0').toLocaleString()
+
+            } else {
+              NetheriteIngotCR = 0
+              N_Pickaxe = 0
+              N_Sword = 0
+              N_Shovel = 0
+              N_Axe = 0
+              D_Pickaxe = 0
+              D_Sword = 0
+              D_Shovel = 0
+              D_Axe = 0
+              N_ChestPlate = 0
+              N_Leggings = 0
+              N_Helmet = 0
+              N_Boots = 0
+              D_ChestPlate = 0
+              D_Leggings = 0
+              D_Helmet = 0
+              D_Boots = 0
+            }
+
+
+            const BcraftedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Items crafted`)
+              .addFields({
+                name: `${McEmotes.N_Sword} Tools ${McEmotes.Pickaxe}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.Netherite} Netherite Ingots`,
+                value: `**Crafted > ${NetheriteIngotCR}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Pick} Netherite Pickaxe`,
+                value: `**Crafted > ${N_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Axe} Netherite Axe`,
+                value: `**Crafted > ${N_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Netherite Sword`,
+                value: `**Crafted > ${N_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Shovel} Netherite Shovel`,
+                value: `**Crafted > ${N_Shovel}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pickaxe} Diamond Pickaxe`,
+                value: `**Crafted > ${D_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Axe} Diamond Axe`,
+                value: `**Crafted > ${D_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Sword} Diamond Sword`,
+                value: `**Crafted > ${D_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Shovel} Diamond Shovel`,
+                value: `**Crafted > ${D_Shovel}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`
+              }, {
+                name: `\n${McEmotes.N_Helmet} Armor ${McEmotes.D_Boots}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.N_Helmet} Netherite Helmet`,
+                value: `**Crafted > ${N_Helmet}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Helmet} Diamond Helmet`,
+                value: `**Crafted > ${D_Helmet}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Chestplate} Netherite Chestplate`,
+                value: `**Crafted > ${N_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Chestplate} Diamond Chestplate`,
+                value: `**Crafted > ${D_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Leggings} Netherite Leggings`,
+                value: `**Crafted > ${N_Leggings}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Leggings} Diamond Leggings`,
+                value: `**Crafted > ${D_Leggings}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Boots} Netherite Boots`,
+                value: `**Crafted > ${N_Boots}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Boots} Diamond Boots`,
+                value: `**Crafted > ${D_Boots}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BcraftedE],
+              components: [goBackCrafted, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'eboy') {
+
+
+          try {
+
+            if (eBoyStats['minecraft:crafted'] !== undefined) {
+              NetheriteIngotCR = (eBoyStats['minecraft:crafted']['minecraft:netherite_ingot'] ?? '0').toLocaleString()
+              N_Pickaxe = (eBoyStats['minecraft:crafted']['minecraft:netherite_pickaxe'] ?? '0').toLocaleString()
+              N_Sword = (eBoyStats['minecraft:crafted']['minecraft:netherite_sword'] ?? '0').toLocaleString()
+              N_Shovel = (eBoyStats['minecraft:crafted']['minecraft:netherite_shovel'] ?? '0').toLocaleString()
+              N_Axe = (eBoyStats['minecraft:crafted']['minecraft:netherite_axe'] ?? '0').toLocaleString()
+              D_Pickaxe = (eBoyStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+              D_Sword = (eBoyStats['minecraft:crafted']['minecraft:diamond_sword'] ?? '0').toLocaleString()
+              D_Shovel = (eBoyStats['minecraft:crafted']['minecraft:diamond_shovel'] ?? '0').toLocaleString()
+              D_Axe = (eBoyStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+
+              N_ChestPlate = (eBoyStats['minecraft:crafted']['minecraft:netherite_chestplate'] ?? '0').toLocaleString()
+              N_Leggings = (eBoyStats['minecraft:crafted']['minecraft:netherite_leggings'] ?? '0').toLocaleString()
+              N_Helmet = (eBoyStats['minecraft:crafted']['minecraft:netherite_helmet'] ?? '0').toLocaleString()
+              N_Boots = (eBoyStats['minecraft:crafted']['minecraft:netherite_boots'] ?? '0').toLocaleString()
+              D_ChestPlate = (eBoyStats['minecraft:crafted']['minecraft:diamond_chestplate'] ?? '0').toLocaleString()
+              D_Leggings = (eBoyStats['minecraft:crafted']['minecraft:diamond_leggings'] ?? '0').toLocaleString()
+              D_Helmet = (eBoyStats['minecraft:crafted']['minecraft:diamond_helmet'] ?? '0').toLocaleString()
+              D_Boots = (eBoyStats['minecraft:crafted']['minecraft:diamond_boots'] ?? '0').toLocaleString()
+
+            } else {
+              NetheriteIngotCR = 0
+              N_Pickaxe = 0
+              N_Sword = 0
+              N_Shovel = 0
+              N_Axe = 0
+              D_Pickaxe = 0
+              D_Sword = 0
+              D_Shovel = 0
+              D_Axe = 0
+              N_ChestPlate = 0
+              N_Leggings = 0
+              N_Helmet = 0
+              N_Boots = 0
+              D_ChestPlate = 0
+              D_Leggings = 0
+              D_Helmet = 0
+              D_Boots = 0
+            }
+
+
+            const BcraftedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Items crafted`)
+              .addFields({
+                name: `${McEmotes.N_Sword} Tools ${McEmotes.Pickaxe}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.Netherite} Netherite Ingots`,
+                value: `**Crafted > ${NetheriteIngotCR}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Pick} Netherite Pickaxe`,
+                value: `**Crafted > ${N_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Axe} Netherite Axe`,
+                value: `**Crafted > ${N_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Netherite Sword`,
+                value: `**Crafted > ${N_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Shovel} Netherite Shovel`,
+                value: `**Crafted > ${N_Shovel}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pickaxe} Diamond Pickaxe`,
+                value: `**Crafted > ${D_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Axe} Diamond Axe`,
+                value: `**Crafted > ${D_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Sword} Diamond Sword`,
+                value: `**Crafted > ${D_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Shovel} Diamond Shovel`,
+                value: `**Crafted > ${D_Shovel}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`
+              }, {
+                name: `\n${McEmotes.N_Helmet} Armor ${McEmotes.D_Boots}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.N_Helmet} Netherite Helmet`,
+                value: `**Crafted > ${N_Helmet}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Helmet} Diamond Helmet`,
+                value: `**Crafted > ${D_Helmet}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Chestplate} Netherite Chestplate`,
+                value: `**Crafted > ${N_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Chestplate} Diamond Chestplate`,
+                value: `**Crafted > ${D_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Leggings} Netherite Leggings`,
+                value: `**Crafted > ${N_Leggings}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Leggings} Diamond Leggings`,
+                value: `**Crafted > ${D_Leggings}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Boots} Netherite Boots`,
+                value: `**Crafted > ${N_Boots}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Boots} Diamond Boots`,
+                value: `**Crafted > ${D_Boots}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BcraftedE],
+              components: [goBackCrafted, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'samy') {
+
+
+          try {
+
+            if (SamyStats['minecraft:crafted'] !== undefined) {
+              NetheriteIngotCR = (SamyStats['minecraft:crafted']['minecraft:netherite_ingot'] ?? '0').toLocaleString()
+              N_Pickaxe = (SamyStats['minecraft:crafted']['minecraft:netherite_pickaxe'] ?? '0').toLocaleString()
+              N_Sword = (SamyStats['minecraft:crafted']['minecraft:netherite_sword'] ?? '0').toLocaleString()
+              N_Shovel = (SamyStats['minecraft:crafted']['minecraft:netherite_shovel'] ?? '0').toLocaleString()
+              N_Axe = (SamyStats['minecraft:crafted']['minecraft:netherite_axe'] ?? '0').toLocaleString()
+              D_Pickaxe = (SamyStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+              D_Sword = (SamyStats['minecraft:crafted']['minecraft:diamond_sword'] ?? '0').toLocaleString()
+              D_Shovel = (SamyStats['minecraft:crafted']['minecraft:diamond_shovel'] ?? '0').toLocaleString()
+              D_Axe = (SamyStats['minecraft:crafted']['minecraft:diamond_pickaxe'] ?? '0').toLocaleString()
+
+              N_ChestPlate = (SamyStats['minecraft:crafted']['minecraft:netherite_chestplate'] ?? '0').toLocaleString()
+              N_Leggings = (SamyStats['minecraft:crafted']['minecraft:netherite_leggings'] ?? '0').toLocaleString()
+              N_Helmet = (SamyStats['minecraft:crafted']['minecraft:netherite_helmet'] ?? '0').toLocaleString()
+              N_Boots = (SamyStats['minecraft:crafted']['minecraft:netherite_boots'] ?? '0').toLocaleString()
+              D_ChestPlate = (SamyStats['minecraft:crafted']['minecraft:diamond_chestplate'] ?? '0').toLocaleString()
+              D_Leggings = (SamyStats['minecraft:crafted']['minecraft:diamond_leggings'] ?? '0').toLocaleString()
+              D_Helmet = (SamyStats['minecraft:crafted']['minecraft:diamond_helmet'] ?? '0').toLocaleString()
+              D_Boots = (SamyStats['minecraft:crafted']['minecraft:diamond_boots'] ?? '0').toLocaleString()
+
+            } else {
+              NetheriteIngotCR = 0
+              N_Pickaxe = 0
+              N_Sword = 0
+              N_Shovel = 0
+              N_Axe = 0
+              D_Pickaxe = 0
+              D_Sword = 0
+              D_Shovel = 0
+              D_Axe = 0
+              N_ChestPlate = 0
+              N_Leggings = 0
+              N_Helmet = 0
+              N_Boots = 0
+              D_ChestPlate = 0
+              D_Leggings = 0
+              D_Helmet = 0
+              D_Boots = 0
+            }
+
+
+            const BcraftedE = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Items crafted`)
+              .addFields({
+                name: `${McEmotes.N_Sword} Tools ${McEmotes.Pickaxe}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.Netherite} Netherite Ingots`,
+                value: `**Crafted > ${NetheriteIngotCR}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Pick} Netherite Pickaxe`,
+                value: `**Crafted > ${N_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Axe} Netherite Axe`,
+                value: `**Crafted > ${N_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Netherite Sword`,
+                value: `**Crafted > ${N_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Shovel} Netherite Shovel`,
+                value: `**Crafted > ${N_Shovel}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Pickaxe} Diamond Pickaxe`,
+                value: `**Crafted > ${D_Pickaxe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Axe} Diamond Axe`,
+                value: `**Crafted > ${D_Axe}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Sword} Diamond Sword`,
+                value: `**Crafted > ${D_Sword}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Shovel} Diamond Shovel`,
+                value: `**Crafted > ${D_Shovel}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`
+              }, {
+                name: `\n${McEmotes.N_Helmet} Armor ${McEmotes.D_Boots}`,
+                value: `\u200b`
+              }, {
+                name: `${McEmotes.N_Helmet} Netherite Helmet`,
+                value: `**Crafted > ${N_Helmet}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Helmet} Diamond Helmet`,
+                value: `**Crafted > ${D_Helmet}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Chestplate} Netherite Chestplate`,
+                value: `**Crafted > ${N_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Chestplate} Diamond Chestplate`,
+                value: `**Crafted > ${D_ChestPlate}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Leggings} Netherite Leggings`,
+                value: `**Crafted > ${N_Leggings}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Leggings} Diamond Leggings`,
+                value: `**Crafted > ${D_Leggings}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Boots} Netherite Boots`,
+                value: `**Crafted > ${N_Boots}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.D_Boots} Diamond Boots`,
+                value: `**Crafted > ${D_Boots}**`,
+                inline: true
+              }, {
+                name: `\u200b`,
+                value: `\u200b`,
+                inline: true
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            await interaction.editReply({
+              embeds: [BcraftedE],
+              components: [goBackCrafted, CloseMenuR]
+            })
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
         }
 
 
@@ -3653,7 +5483,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -3758,7 +5588,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -3863,7 +5693,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -3968,7 +5798,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4073,7 +5903,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4178,7 +6008,7 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4282,7 +6112,447 @@ module.exports = class Statslash extends SlashCommand {
 
             return interaction.editReply({
               embeds: [MiscEmbedPageOne],
-              components: [pageOneRow, goBackMisc]
+              components: [pageOneRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'hazem') {
+
+          try {
+
+            if (RavenStats['minecraft:custom'] !== undefined) {
+              tradedC = (RavenStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+              talkedToVillager = (RavenStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+              animalsBred = (RavenStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+              damageDelt = (RavenStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+              damageTaken = (RavenStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+              playersKilled = (RavenStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+              deathsc = (RavenStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+              raidWin = (RavenStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+              raidTriggered = (RavenStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+            } else {
+              tradedC = 0
+              talkedToVillager = 0
+              animalsBred = 0
+              damageDelt = 0
+              damageTaken = 0
+              playersKilled = 0
+              deathsc = 0
+              raidWin = 0
+              raidTriggered = 0
+            }
+
+            if (RavenStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(RavenStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+            if (RavenStats['minecraft:killed'] !== undefined) {
+              pillagerKills = (RavenStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+              vindicatorKills = (RavenStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+              ravagerKills = (RavenStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+              witchKills = (RavenStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              evokerKills = (RavenStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+            } else {
+              pillagerKills = 0
+              vindicatorKills = 0
+              ravagerKills = 0
+              witchKills = 0
+              evokerKills = 0
+            }
+
+            if (RavenStats['minecraft:killed_by'] !== undefined) {
+              killedByPlayer = (RavenStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+            } else {
+              killedByPlayer = 0
+            }
+
+
+            const MiscEmbedPageOne = new MessageEmbed()
+
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Villager} Villagers interactions`,
+                value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Chicken} Animals bred`,
+                value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Damage stats`,
+                value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+                inline: false
+              }, {
+                name: `${McEmotes.Pillager} Raid stats`,
+                value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+                inline: false
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            return interaction.editReply({
+              embeds: [MiscEmbedPageOne],
+              components: [pageOneRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'mombar') {
+
+          try {
+
+            if (mombarStats['minecraft:custom'] !== undefined) {
+              tradedC = (mombarStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+              talkedToVillager = (mombarStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+              animalsBred = (mombarStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+              damageDelt = (mombarStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+              damageTaken = (mombarStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+              playersKilled = (mombarStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+              deathsc = (mombarStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+              raidWin = (mombarStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+              raidTriggered = (mombarStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+            } else {
+              tradedC = 0
+              talkedToVillager = 0
+              animalsBred = 0
+              damageDelt = 0
+              damageTaken = 0
+              playersKilled = 0
+              deathsc = 0
+              raidWin = 0
+              raidTriggered = 0
+            }
+
+            if (mombarStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(mombarStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+            if (mombarStats['minecraft:killed'] !== undefined) {
+              pillagerKills = (mombarStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+              vindicatorKills = (mombarStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+              ravagerKills = (mombarStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+              witchKills = (mombarStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              evokerKills = (mombarStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+            } else {
+              pillagerKills = 0
+              vindicatorKills = 0
+              ravagerKills = 0
+              witchKills = 0
+              evokerKills = 0
+            }
+
+            if (mombarStats['minecraft:killed_by'] !== undefined) {
+              killedByPlayer = (mombarStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+            } else {
+              killedByPlayer = 0
+            }
+
+
+            const MiscEmbedPageOne = new MessageEmbed()
+
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Villager} Villagers interactions`,
+                value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Chicken} Animals bred`,
+                value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Damage stats`,
+                value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+                inline: false
+              }, {
+                name: `${McEmotes.Pillager} Raid stats`,
+                value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+                inline: false
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            return interaction.editReply({
+              embeds: [MiscEmbedPageOne],
+              components: [pageOneRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'eboy') {
+
+          try {
+
+            if (eBoyStats['minecraft:custom'] !== undefined) {
+              tradedC = (eBoyStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+              talkedToVillager = (eBoyStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+              animalsBred = (eBoyStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+              damageDelt = (eBoyStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+              damageTaken = (eBoyStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+              playersKilled = (eBoyStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+              deathsc = (eBoyStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+              raidWin = (eBoyStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+              raidTriggered = (eBoyStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+            } else {
+              tradedC = 0
+              talkedToVillager = 0
+              animalsBred = 0
+              damageDelt = 0
+              damageTaken = 0
+              playersKilled = 0
+              deathsc = 0
+              raidWin = 0
+              raidTriggered = 0
+            }
+
+            if (eBoyStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(eBoyStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+            if (eBoyStats['minecraft:killed'] !== undefined) {
+              pillagerKills = (eBoyStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+              vindicatorKills = (eBoyStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+              ravagerKills = (eBoyStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+              witchKills = (eBoyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              evokerKills = (eBoyStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+            } else {
+              pillagerKills = 0
+              vindicatorKills = 0
+              ravagerKills = 0
+              witchKills = 0
+              evokerKills = 0
+            }
+
+            if (eBoyStats['minecraft:killed_by'] !== undefined) {
+              killedByPlayer = (eBoyStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+            } else {
+              killedByPlayer = 0
+            }
+
+
+            const MiscEmbedPageOne = new MessageEmbed()
+
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Villager} Villagers interactions`,
+                value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Chicken} Animals bred`,
+                value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Damage stats`,
+                value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+                inline: false
+              }, {
+                name: `${McEmotes.Pillager} Raid stats`,
+                value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+                inline: false
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            return interaction.editReply({
+              embeds: [MiscEmbedPageOne],
+              components: [pageOneRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'samy') {
+
+          try {
+
+            if (SamyStats['minecraft:custom'] !== undefined) {
+              tradedC = (SamyStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+              talkedToVillager = (SamyStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+              animalsBred = (SamyStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+              damageDelt = (SamyStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+              damageTaken = (SamyStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+              playersKilled = (SamyStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+              deathsc = (SamyStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+              raidWin = (SamyStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+              raidTriggered = (SamyStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+            } else {
+              tradedC = 0
+              talkedToVillager = 0
+              animalsBred = 0
+              damageDelt = 0
+              damageTaken = 0
+              playersKilled = 0
+              deathsc = 0
+              raidWin = 0
+              raidTriggered = 0
+            }
+
+            if (SamyStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(SamyStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+            if (SamyStats['minecraft:killed'] !== undefined) {
+              pillagerKills = (SamyStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+              vindicatorKills = (SamyStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+              ravagerKills = (SamyStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+              witchKills = (SamyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+              evokerKills = (SamyStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+            } else {
+              pillagerKills = 0
+              vindicatorKills = 0
+              ravagerKills = 0
+              witchKills = 0
+              evokerKills = 0
+            }
+
+            if (SamyStats['minecraft:killed_by'] !== undefined) {
+              killedByPlayer = (SamyStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+            } else {
+              killedByPlayer = 0
+            }
+
+
+            const MiscEmbedPageOne = new MessageEmbed()
+
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Villager} Villagers interactions`,
+                value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+                inline: true
+              }, {
+                name: `${McEmotes.Chicken} Animals bred`,
+                value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+                inline: true
+              }, {
+                name: `${McEmotes.N_Sword} Damage stats`,
+                value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+                inline: false
+              }, {
+                name: `${McEmotes.Pillager} Raid stats`,
+                value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+                inline: false
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+            return interaction.editReply({
+              embeds: [MiscEmbedPageOne],
+              components: [pageOneRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4409,7 +6679,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4535,7 +6805,7 @@ module.exports = class Statslash extends SlashCommand {
 
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4660,9 +6930,10 @@ module.exports = class Statslash extends SlashCommand {
               })
               .setTimestamp()
 
+
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4788,9 +7059,10 @@ module.exports = class Statslash extends SlashCommand {
               })
               .setTimestamp()
 
+
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -4916,9 +7188,10 @@ module.exports = class Statslash extends SlashCommand {
               })
               .setTimestamp()
 
+
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -5044,9 +7317,10 @@ module.exports = class Statslash extends SlashCommand {
               })
               .setTimestamp()
 
+
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -5172,9 +7446,528 @@ module.exports = class Statslash extends SlashCommand {
               })
               .setTimestamp()
 
+
             await interaction.editReply({
               embeds: [MiscEmbedPageTwo],
-              components: [pageTwoRow, goBackMisc]
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'hazem') {
+
+          try {
+
+            if (RavenStats['minecraft:custom'] !== undefined) {
+
+              playTimeS = Number(RavenStats['minecraft:custom']['minecraft:total_world_time'] ?? '0')
+
+              distanceClimbedC = Number(RavenStats['minecraft:custom']['minecraft:climb_one_cm'] ?? '0')
+              distanceCrouchedC = Number(RavenStats['minecraft:custom']['minecraft:crouch_one_cm'] ?? '0')
+              distanceFallenC = Number(RavenStats['minecraft:custom']['minecraft:fall_one_cm'] ?? '0')
+              distanceFlowenC = Number(RavenStats['minecraft:custom']['minecraft:fly_one_cm'] ?? '0')
+              distanceSprintedC = Number(RavenStats['minecraft:custom']['minecraft:sprint_one_cm'] ?? '0')
+              distanceSwamC = Number(RavenStats['minecraft:custom']['minecraft:swim_one_cm'] ?? '0')
+              distanceWalkedC = Number(RavenStats['minecraft:custom']['minecraft:walk_one_cm'] ?? '0')
+              distanceWalkedOnWaterC = Number(RavenStats['minecraft:custom']['minecraft:walk_on_water_one_cm'] ?? '0')
+              distanceWalkedUnderWaterC = Number(RavenStats['minecraft:custom']['minecraft:walk_under_water_one_cm'] ?? '0')
+              boatC = Number(RavenStats['minecraft:custom']['minecraft:boat_one_cm'] ?? '0')
+              ElytraC = Number(RavenStats['minecraft:custom']['minecraft:aviate_one_cm'] ?? '0')
+              HorseC = Number(RavenStats['minecraft:custom']['minecraft:horse_one_cm'] ?? '0')
+              MineCartC = Number(RavenStats['minecraft:custom']['minecraft:minecart_one_cm'] ?? '0')
+              PigC = Number(RavenStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+              StriderC = Number(RavenStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+
+              TimeSinceRest = (RavenStats['minecraft:custom']['minecraft:time_since_rest'] ?? '0')
+              TimeSlept = (RavenStats['minecraft:custom']['minecraft:sleep_in_bed'] ?? '0')
+
+              ItemsDropped = (RavenStats['minecraft:custom']['minecraft:drop'] ?? '0').toLocaleString()
+              ItemsEnchanted = (RavenStats['minecraft:custom']['minecraft:enchant_item'] ?? '0').toLocaleString()
+            } else {
+              playTimeS
+
+              distanceClimbedC = 0
+              distanceCrouchedC = 0
+              distanceFallenC = 0
+              distanceFlowenC = 0
+              distanceSprintedC = 0
+              distanceSwamC = 0
+              distanceWalkedC = 0
+              distanceWalkedOnWaterC = 0
+              distanceWalkedUnderWaterC = 0
+              boatC = 0
+              ElytraC = 0
+              HorseC = 0
+              MineCartC = 0
+              PigC = 0
+              StriderC = 0
+              TimeSinceRest = 0
+              TimeSlept = 0
+              ItemsDropped = 0
+              ItemsEnchanted = 0
+            }
+
+            const playTimeHour = (playTimeS / 3600).toLocaleString()
+            const distanceClimbedM = (distanceClimbedC / 100).toLocaleString()
+            const distanceCrouchedM = (distanceCrouchedC / 100).toLocaleString()
+            const distanceFallenM = (distanceFallenC / 100).toLocaleString()
+            const distanceFlowenM = (distanceFlowenC / 100).toLocaleString()
+            const distanceSprintedM = (distanceSprintedC / 100).toLocaleString()
+            const distanceSwamM = (distanceSwamC / 100).toLocaleString()
+            const distanceWalkedM = (distanceWalkedC / 100).toLocaleString()
+            const distanceWalkedOnWaterM = (distanceWalkedOnWaterC / 100).toLocaleString()
+            const distanceWalkedUnderWaterM = (distanceWalkedUnderWaterC / 100).toLocaleString()
+            const boatM = (boatC / 100).toLocaleString()
+            const ElytraM = (ElytraC / 100).toLocaleString()
+            const HorseM = (HorseC / 100).toLocaleString()
+            const MineCartM = (MineCartC / 100).toLocaleString()
+            const StriderM = (StriderC / 100).toLocaleString()
+            const PigM = (PigC / 100).toLocaleString()
+            const TotalC = (distanceClimbedC + distanceCrouchedC + distanceFallenC + distanceFlowenC + distanceSprintedC + distanceSwamC + distanceWalkedC + distanceWalkedOnWaterC + distanceWalkedUnderWaterC + boatC + ElytraC + HorseC + MineCartC + PigC + StriderC)
+            const TotalM = (TotalC / 100).toLocaleString()
+            const TimeSinceRestM = (TimeSinceRest / 60).toLocaleString()
+            const timeSleptM = (TimeSlept / 3600).toLocaleString()
+
+            if (RavenStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(RavenStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+            const MiscEmbedPageTwo = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page Two [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Pig} Distance travelled`,
+                value: `**Distance travelled || Unit: M/Meters, One block is one meter**\n\n**Climbed > ${distanceClimbedM}**\n**Fell > ${distanceFallenM}**\n**Sprinted > ${distanceSprintedM}**\n**Swam > ${distanceSwamM}**\n**Walked > ${distanceWalkedM}**\n**Walked on Water > ${distanceWalkedOnWaterM}**\n**Walked Under Water > ${distanceWalkedUnderWaterM}**\n**Crouched > ${distanceCrouchedM}**\n**Flown > ${distanceFlowenM}**\n**With boat > ${boatM}**\n**With Elytra > ${ElytraM}**\n**On Pig > ${PigM}**\n**On Strider > ${StriderM}**\n**MineCart > ${MineCartM}**\n**Horse > ${HorseM}**\n**Total > ${TotalM}**`,
+                inline: false
+              }, {
+                name: `🕐 PlayTime (Not accurate)`,
+                value: `**Total time (Not accurate) > ${playTimeHour}**\n**Time since last death (Minute) > ${timeSinceDeathM}**\n**Time since last rest (Minute) > ${TimeSinceRestM}**\n**Time spent sleeping (Hours) > ${timeSleptM}**`
+              }, {
+                name: `${McEmotes.Cake} Items`,
+                value: `**Items dropped > ${ItemsDropped}**\n**Items Enchanted > ${ItemsEnchanted}**`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+
+            await interaction.editReply({
+              embeds: [MiscEmbedPageTwo],
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+        } else if (target === 'mombar') {
+
+
+          try {
+
+            if (mombarStats['minecraft:custom'] !== undefined) {
+
+              playTimeS = Number(mombarStats['minecraft:custom']['minecraft:total_world_time'] ?? '0')
+
+              distanceClimbedC = Number(mombarStats['minecraft:custom']['minecraft:climb_one_cm'] ?? '0')
+              distanceCrouchedC = Number(mombarStats['minecraft:custom']['minecraft:crouch_one_cm'] ?? '0')
+              distanceFallenC = Number(mombarStats['minecraft:custom']['minecraft:fall_one_cm'] ?? '0')
+              distanceFlowenC = Number(mombarStats['minecraft:custom']['minecraft:fly_one_cm'] ?? '0')
+              distanceSprintedC = Number(mombarStats['minecraft:custom']['minecraft:sprint_one_cm'] ?? '0')
+              distanceSwamC = Number(mombarStats['minecraft:custom']['minecraft:swim_one_cm'] ?? '0')
+              distanceWalkedC = Number(mombarStats['minecraft:custom']['minecraft:walk_one_cm'] ?? '0')
+              distanceWalkedOnWaterC = Number(mombarStats['minecraft:custom']['minecraft:walk_on_water_one_cm'] ?? '0')
+              distanceWalkedUnderWaterC = Number(mombarStats['minecraft:custom']['minecraft:walk_under_water_one_cm'] ?? '0')
+              boatC = Number(mombarStats['minecraft:custom']['minecraft:boat_one_cm'] ?? '0')
+              ElytraC = Number(mombarStats['minecraft:custom']['minecraft:aviate_one_cm'] ?? '0')
+              HorseC = Number(mombarStats['minecraft:custom']['minecraft:horse_one_cm'] ?? '0')
+              MineCartC = Number(mombarStats['minecraft:custom']['minecraft:minecart_one_cm'] ?? '0')
+              PigC = Number(mombarStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+              StriderC = Number(mombarStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+
+              TimeSinceRest = (mombarStats['minecraft:custom']['minecraft:time_since_rest'] ?? '0')
+              TimeSlept = (mombarStats['minecraft:custom']['minecraft:sleep_in_bed'] ?? '0')
+
+              ItemsDropped = (mombarStats['minecraft:custom']['minecraft:drop'] ?? '0').toLocaleString()
+              ItemsEnchanted = (mombarStats['minecraft:custom']['minecraft:enchant_item'] ?? '0').toLocaleString()
+            } else {
+              playTimeS
+
+              distanceClimbedC = 0
+              distanceCrouchedC = 0
+              distanceFallenC = 0
+              distanceFlowenC = 0
+              distanceSprintedC = 0
+              distanceSwamC = 0
+              distanceWalkedC = 0
+              distanceWalkedOnWaterC = 0
+              distanceWalkedUnderWaterC = 0
+              boatC = 0
+              ElytraC = 0
+              HorseC = 0
+              MineCartC = 0
+              PigC = 0
+              StriderC = 0
+              TimeSinceRest = 0
+              TimeSlept = 0
+              ItemsDropped = 0
+              ItemsEnchanted = 0
+            }
+
+            const playTimeHour = (playTimeS / 3600).toLocaleString()
+            const distanceClimbedM = (distanceClimbedC / 100).toLocaleString()
+            const distanceCrouchedM = (distanceCrouchedC / 100).toLocaleString()
+            const distanceFallenM = (distanceFallenC / 100).toLocaleString()
+            const distanceFlowenM = (distanceFlowenC / 100).toLocaleString()
+            const distanceSprintedM = (distanceSprintedC / 100).toLocaleString()
+            const distanceSwamM = (distanceSwamC / 100).toLocaleString()
+            const distanceWalkedM = (distanceWalkedC / 100).toLocaleString()
+            const distanceWalkedOnWaterM = (distanceWalkedOnWaterC / 100).toLocaleString()
+            const distanceWalkedUnderWaterM = (distanceWalkedUnderWaterC / 100).toLocaleString()
+            const boatM = (boatC / 100).toLocaleString()
+            const ElytraM = (ElytraC / 100).toLocaleString()
+            const HorseM = (HorseC / 100).toLocaleString()
+            const MineCartM = (MineCartC / 100).toLocaleString()
+            const StriderM = (StriderC / 100).toLocaleString()
+            const PigM = (PigC / 100).toLocaleString()
+            const TotalC = (distanceClimbedC + distanceCrouchedC + distanceFallenC + distanceFlowenC + distanceSprintedC + distanceSwamC + distanceWalkedC + distanceWalkedOnWaterC + distanceWalkedUnderWaterC + boatC + ElytraC + HorseC + MineCartC + PigC + StriderC)
+            const TotalM = (TotalC / 100).toLocaleString()
+            const TimeSinceRestM = (TimeSinceRest / 60).toLocaleString()
+            const timeSleptM = (TimeSlept / 3600).toLocaleString()
+
+            if (mombarStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(mombarStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+            const MiscEmbedPageTwo = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page Two [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Pig} Distance travelled`,
+                value: `**Distance travelled || Unit: M/Meters, One block is one meter**\n\n**Climbed > ${distanceClimbedM}**\n**Fell > ${distanceFallenM}**\n**Sprinted > ${distanceSprintedM}**\n**Swam > ${distanceSwamM}**\n**Walked > ${distanceWalkedM}**\n**Walked on Water > ${distanceWalkedOnWaterM}**\n**Walked Under Water > ${distanceWalkedUnderWaterM}**\n**Crouched > ${distanceCrouchedM}**\n**Flown > ${distanceFlowenM}**\n**With boat > ${boatM}**\n**With Elytra > ${ElytraM}**\n**On Pig > ${PigM}**\n**On Strider > ${StriderM}**\n**MineCart > ${MineCartM}**\n**Horse > ${HorseM}**\n**Total > ${TotalM}**`,
+                inline: false
+              }, {
+                name: `🕐 PlayTime (Not accurate)`,
+                value: `**Total time (Not accurate) > ${playTimeHour}**\n**Time since last death (Minute) > ${timeSinceDeathM}**\n**Time since last rest (Minute) > ${TimeSinceRestM}**\n**Time spent sleeping (Hours) > ${timeSleptM}**`
+              }, {
+                name: `${McEmotes.Cake} Items`,
+                value: `**Items dropped > ${ItemsDropped}**\n**Items Enchanted > ${ItemsEnchanted}**`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+
+            await interaction.editReply({
+              embeds: [MiscEmbedPageTwo],
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'eboy') {
+
+
+          try {
+
+            if (eBoyStats['minecraft:custom'] !== undefined) {
+
+              playTimeS = Number(eBoyStats['minecraft:custom']['minecraft:total_world_time'] ?? '0')
+
+              distanceClimbedC = Number(eBoyStats['minecraft:custom']['minecraft:climb_one_cm'] ?? '0')
+              distanceCrouchedC = Number(eBoyStats['minecraft:custom']['minecraft:crouch_one_cm'] ?? '0')
+              distanceFallenC = Number(eBoyStats['minecraft:custom']['minecraft:fall_one_cm'] ?? '0')
+              distanceFlowenC = Number(eBoyStats['minecraft:custom']['minecraft:fly_one_cm'] ?? '0')
+              distanceSprintedC = Number(eBoyStats['minecraft:custom']['minecraft:sprint_one_cm'] ?? '0')
+              distanceSwamC = Number(eBoyStats['minecraft:custom']['minecraft:swim_one_cm'] ?? '0')
+              distanceWalkedC = Number(eBoyStats['minecraft:custom']['minecraft:walk_one_cm'] ?? '0')
+              distanceWalkedOnWaterC = Number(eBoyStats['minecraft:custom']['minecraft:walk_on_water_one_cm'] ?? '0')
+              distanceWalkedUnderWaterC = Number(eBoyStats['minecraft:custom']['minecraft:walk_under_water_one_cm'] ?? '0')
+              boatC = Number(eBoyStats['minecraft:custom']['minecraft:boat_one_cm'] ?? '0')
+              ElytraC = Number(eBoyStats['minecraft:custom']['minecraft:aviate_one_cm'] ?? '0')
+              HorseC = Number(eBoyStats['minecraft:custom']['minecraft:horse_one_cm'] ?? '0')
+              MineCartC = Number(eBoyStats['minecraft:custom']['minecraft:minecart_one_cm'] ?? '0')
+              PigC = Number(eBoyStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+              StriderC = Number(eBoyStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+
+              TimeSinceRest = (eBoyStats['minecraft:custom']['minecraft:time_since_rest'] ?? '0')
+              TimeSlept = (eBoyStats['minecraft:custom']['minecraft:sleep_in_bed'] ?? '0')
+
+              ItemsDropped = (eBoyStats['minecraft:custom']['minecraft:drop'] ?? '0').toLocaleString()
+              ItemsEnchanted = (eBoyStats['minecraft:custom']['minecraft:enchant_item'] ?? '0').toLocaleString()
+            } else {
+              playTimeS
+
+              distanceClimbedC = 0
+              distanceCrouchedC = 0
+              distanceFallenC = 0
+              distanceFlowenC = 0
+              distanceSprintedC = 0
+              distanceSwamC = 0
+              distanceWalkedC = 0
+              distanceWalkedOnWaterC = 0
+              distanceWalkedUnderWaterC = 0
+              boatC = 0
+              ElytraC = 0
+              HorseC = 0
+              MineCartC = 0
+              PigC = 0
+              StriderC = 0
+              TimeSinceRest = 0
+              TimeSlept = 0
+              ItemsDropped = 0
+              ItemsEnchanted = 0
+            }
+
+            const playTimeHour = (playTimeS / 3600).toLocaleString()
+            const distanceClimbedM = (distanceClimbedC / 100).toLocaleString()
+            const distanceCrouchedM = (distanceCrouchedC / 100).toLocaleString()
+            const distanceFallenM = (distanceFallenC / 100).toLocaleString()
+            const distanceFlowenM = (distanceFlowenC / 100).toLocaleString()
+            const distanceSprintedM = (distanceSprintedC / 100).toLocaleString()
+            const distanceSwamM = (distanceSwamC / 100).toLocaleString()
+            const distanceWalkedM = (distanceWalkedC / 100).toLocaleString()
+            const distanceWalkedOnWaterM = (distanceWalkedOnWaterC / 100).toLocaleString()
+            const distanceWalkedUnderWaterM = (distanceWalkedUnderWaterC / 100).toLocaleString()
+            const boatM = (boatC / 100).toLocaleString()
+            const ElytraM = (ElytraC / 100).toLocaleString()
+            const HorseM = (HorseC / 100).toLocaleString()
+            const MineCartM = (MineCartC / 100).toLocaleString()
+            const StriderM = (StriderC / 100).toLocaleString()
+            const PigM = (PigC / 100).toLocaleString()
+            const TotalC = (distanceClimbedC + distanceCrouchedC + distanceFallenC + distanceFlowenC + distanceSprintedC + distanceSwamC + distanceWalkedC + distanceWalkedOnWaterC + distanceWalkedUnderWaterC + boatC + ElytraC + HorseC + MineCartC + PigC + StriderC)
+            const TotalM = (TotalC / 100).toLocaleString()
+            const TimeSinceRestM = (TimeSinceRest / 60).toLocaleString()
+            const timeSleptM = (TimeSlept / 3600).toLocaleString()
+
+            if (eBoyStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(eBoyStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+            const MiscEmbedPageTwo = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page Two [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Pig} Distance travelled`,
+                value: `**Distance travelled || Unit: M/Meters, One block is one meter**\n\n**Climbed > ${distanceClimbedM}**\n**Fell > ${distanceFallenM}**\n**Sprinted > ${distanceSprintedM}**\n**Swam > ${distanceSwamM}**\n**Walked > ${distanceWalkedM}**\n**Walked on Water > ${distanceWalkedOnWaterM}**\n**Walked Under Water > ${distanceWalkedUnderWaterM}**\n**Crouched > ${distanceCrouchedM}**\n**Flown > ${distanceFlowenM}**\n**With boat > ${boatM}**\n**With Elytra > ${ElytraM}**\n**On Pig > ${PigM}**\n**On Strider > ${StriderM}**\n**MineCart > ${MineCartM}**\n**Horse > ${HorseM}**\n**Total > ${TotalM}**`,
+                inline: false
+              }, {
+                name: `🕐 PlayTime (Not accurate)`,
+                value: `**Total time (Not accurate) > ${playTimeHour}**\n**Time since last death (Minute) > ${timeSinceDeathM}**\n**Time since last rest (Minute) > ${TimeSinceRestM}**\n**Time spent sleeping (Hours) > ${timeSleptM}**`
+              }, {
+                name: `${McEmotes.Cake} Items`,
+                value: `**Items dropped > ${ItemsDropped}**\n**Items Enchanted > ${ItemsEnchanted}**`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+
+            await interaction.editReply({
+              embeds: [MiscEmbedPageTwo],
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
+            })
+
+          } catch (err) {
+
+            const BunnySender = await client.users.fetch("333644367539470337").catch(() => null)
+
+            const ErrorEmbed = new MessageEmbed()
+              .setTitle(title.ERROR)
+              .setColor(colors.ERRORRED)
+              .setDescription(`Oh no! Looks like I've ran into an error, I've sent the error to my developer\n\n\`\`\`js\n${err}\`\`\``)
+
+            await interaction.editReply({
+              embeds: [ErrorEmbed],
+              components: []
+            })
+
+            BunnySender.send({
+              embeds: [ErrorEmbed]
+            })
+            return
+
+          }
+
+        } else if (target === 'samy') {
+
+
+          try {
+
+            if (SamyStats['minecraft:custom'] !== undefined) {
+
+              playTimeS = Number(SamyStats['minecraft:custom']['minecraft:total_world_time'] ?? '0')
+
+              distanceClimbedC = Number(SamyStats['minecraft:custom']['minecraft:climb_one_cm'] ?? '0')
+              distanceCrouchedC = Number(SamyStats['minecraft:custom']['minecraft:crouch_one_cm'] ?? '0')
+              distanceFallenC = Number(SamyStats['minecraft:custom']['minecraft:fall_one_cm'] ?? '0')
+              distanceFlowenC = Number(SamyStats['minecraft:custom']['minecraft:fly_one_cm'] ?? '0')
+              distanceSprintedC = Number(SamyStats['minecraft:custom']['minecraft:sprint_one_cm'] ?? '0')
+              distanceSwamC = Number(SamyStats['minecraft:custom']['minecraft:swim_one_cm'] ?? '0')
+              distanceWalkedC = Number(SamyStats['minecraft:custom']['minecraft:walk_one_cm'] ?? '0')
+              distanceWalkedOnWaterC = Number(SamyStats['minecraft:custom']['minecraft:walk_on_water_one_cm'] ?? '0')
+              distanceWalkedUnderWaterC = Number(SamyStats['minecraft:custom']['minecraft:walk_under_water_one_cm'] ?? '0')
+              boatC = Number(SamyStats['minecraft:custom']['minecraft:boat_one_cm'] ?? '0')
+              ElytraC = Number(SamyStats['minecraft:custom']['minecraft:aviate_one_cm'] ?? '0')
+              HorseC = Number(SamyStats['minecraft:custom']['minecraft:horse_one_cm'] ?? '0')
+              MineCartC = Number(SamyStats['minecraft:custom']['minecraft:minecart_one_cm'] ?? '0')
+              PigC = Number(SamyStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+              StriderC = Number(SamyStats['minecraft:custom']['minecraft:pig_one_cm'] ?? '0')
+
+              TimeSinceRest = (SamyStats['minecraft:custom']['minecraft:time_since_rest'] ?? '0')
+              TimeSlept = (SamyStats['minecraft:custom']['minecraft:sleep_in_bed'] ?? '0')
+
+              ItemsDropped = (SamyStats['minecraft:custom']['minecraft:drop'] ?? '0').toLocaleString()
+              ItemsEnchanted = (SamyStats['minecraft:custom']['minecraft:enchant_item'] ?? '0').toLocaleString()
+            } else {
+              playTimeS
+
+              distanceClimbedC = 0
+              distanceCrouchedC = 0
+              distanceFallenC = 0
+              distanceFlowenC = 0
+              distanceSprintedC = 0
+              distanceSwamC = 0
+              distanceWalkedC = 0
+              distanceWalkedOnWaterC = 0
+              distanceWalkedUnderWaterC = 0
+              boatC = 0
+              ElytraC = 0
+              HorseC = 0
+              MineCartC = 0
+              PigC = 0
+              StriderC = 0
+              TimeSinceRest = 0
+              TimeSlept = 0
+              ItemsDropped = 0
+              ItemsEnchanted = 0
+            }
+
+            const playTimeHour = (playTimeS / 3600).toLocaleString()
+            const distanceClimbedM = (distanceClimbedC / 100).toLocaleString()
+            const distanceCrouchedM = (distanceCrouchedC / 100).toLocaleString()
+            const distanceFallenM = (distanceFallenC / 100).toLocaleString()
+            const distanceFlowenM = (distanceFlowenC / 100).toLocaleString()
+            const distanceSprintedM = (distanceSprintedC / 100).toLocaleString()
+            const distanceSwamM = (distanceSwamC / 100).toLocaleString()
+            const distanceWalkedM = (distanceWalkedC / 100).toLocaleString()
+            const distanceWalkedOnWaterM = (distanceWalkedOnWaterC / 100).toLocaleString()
+            const distanceWalkedUnderWaterM = (distanceWalkedUnderWaterC / 100).toLocaleString()
+            const boatM = (boatC / 100).toLocaleString()
+            const ElytraM = (ElytraC / 100).toLocaleString()
+            const HorseM = (HorseC / 100).toLocaleString()
+            const MineCartM = (MineCartC / 100).toLocaleString()
+            const StriderM = (StriderC / 100).toLocaleString()
+            const PigM = (PigC / 100).toLocaleString()
+            const TotalC = (distanceClimbedC + distanceCrouchedC + distanceFallenC + distanceFlowenC + distanceSprintedC + distanceSwamC + distanceWalkedC + distanceWalkedOnWaterC + distanceWalkedUnderWaterC + boatC + ElytraC + HorseC + MineCartC + PigC + StriderC)
+            const TotalM = (TotalC / 100).toLocaleString()
+            const TimeSinceRestM = (TimeSinceRest / 60).toLocaleString()
+            const timeSleptM = (TimeSlept / 3600).toLocaleString()
+
+            if (SamyStats['minecraft:custom'] !== undefined) {
+              timeSinceDeathS = Number(SamyStats['minecraft:custom']['minecraft:time_since_death'])
+            } else {
+              timeSinceDeathS = 0
+            }
+            const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+            const MiscEmbedPageTwo = new MessageEmbed()
+              .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+              .setColor(colors.DEFAULT)
+              .setDescription(`User stats for ${GamerTag} || Misc, Page Two [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+              .addFields({
+                name: `${McEmotes.Pig} Distance travelled`,
+                value: `**Distance travelled || Unit: M/Meters, One block is one meter**\n\n**Climbed > ${distanceClimbedM}**\n**Fell > ${distanceFallenM}**\n**Sprinted > ${distanceSprintedM}**\n**Swam > ${distanceSwamM}**\n**Walked > ${distanceWalkedM}**\n**Walked on Water > ${distanceWalkedOnWaterM}**\n**Walked Under Water > ${distanceWalkedUnderWaterM}**\n**Crouched > ${distanceCrouchedM}**\n**Flown > ${distanceFlowenM}**\n**With boat > ${boatM}**\n**With Elytra > ${ElytraM}**\n**On Pig > ${PigM}**\n**On Strider > ${StriderM}**\n**MineCart > ${MineCartM}**\n**Horse > ${HorseM}**\n**Total > ${TotalM}**`,
+                inline: false
+              }, {
+                name: `🕐 PlayTime (Not accurate)`,
+                value: `**Total time (Not accurate) > ${playTimeHour}**\n**Time since last death (Minute) > ${timeSinceDeathM}**\n**Time since last rest (Minute) > ${TimeSinceRestM}**\n**Time spent sleeping (Hours) > ${timeSleptM}**`
+              }, {
+                name: `${McEmotes.Cake} Items`,
+                value: `**Items dropped > ${ItemsDropped}**\n**Items Enchanted > ${ItemsEnchanted}**`
+              })
+              .setFooter({
+                text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+                iconURL: interaction.user.displayAvatarURL()
+              })
+              .setTimestamp()
+
+
+            await interaction.editReply({
+              embeds: [MiscEmbedPageTwo],
+              components: [pageTwoRow, goBackMisc, CloseMenuR]
             })
 
           } catch (err) {
@@ -5199,7 +7992,6 @@ module.exports = class Statslash extends SlashCommand {
           }
 
         }
-
       } else if (i.customId === 'page1') {
 
         if (target === 'Bunny') {
@@ -5259,9 +8051,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5287,7 +8079,7 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
         } else if (target === 'Boda') {
 
@@ -5345,9 +8137,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5373,7 +8165,7 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
 
         } else if (target === 'Yoda') {
@@ -5432,9 +8224,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5460,9 +8252,8 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
-
         } else if (target === 'Ayato') {
 
           if (AyatoStats['minecraft:custom'] !== undefined) {
@@ -5519,9 +8310,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5547,7 +8338,7 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
         } else if (target === 'Grep') {
 
@@ -5605,9 +8396,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5633,7 +8424,7 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
 
         } else if (target === 'Majkor') {
@@ -5692,9 +8483,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5720,7 +8511,7 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
 
         } else if (target === 'Wael') {
@@ -5779,9 +8570,9 @@ module.exports = class Statslash extends SlashCommand {
 
           const MiscEmbedPageOne = new MessageEmbed()
 
-            .setTitle(`HamadaCraft user stats for Bunnys`)
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
             .setColor(colors.DEFAULT)
-            .setDescription(`User stats for Bunnys || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
             .addFields({
               name: `${McEmotes.Villager} Villagers interactions`,
               value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
@@ -5807,11 +8598,1055 @@ module.exports = class Statslash extends SlashCommand {
 
           await interaction.editReply({
             embeds: [MiscEmbedPageOne],
-            components: [pageOneRow, goBackMisc]
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'hazem') {
+
+          if (RavenStats['minecraft:custom'] !== undefined) {
+            tradedC = (RavenStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+            talkedToVillager = (RavenStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+            animalsBred = (RavenStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+            damageDelt = (RavenStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+            damageTaken = (RavenStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+            playersKilled = (RavenStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+            deathsc = (RavenStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+            raidWin = (RavenStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+            raidTriggered = (RavenStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+          } else {
+            tradedC = 0
+            talkedToVillager = 0
+            animalsBred = 0
+            damageDelt = 0
+            damageTaken = 0
+            playersKilled = 0
+            deathsc = 0
+            raidWin = 0
+            raidTriggered = 0
+          }
+
+          if (RavenStats['minecraft:custom'] !== undefined) {
+            timeSinceDeathS = Number(RavenStats['minecraft:custom']['minecraft:time_since_death'])
+          } else {
+            timeSinceDeathS = 0
+          }
+          const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+          if (RavenStats['minecraft:killed'] !== undefined) {
+            pillagerKills = (RavenStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+            vindicatorKills = (RavenStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+            ravagerKills = (RavenStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+            witchKills = (RavenStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+            evokerKills = (RavenStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+          } else {
+            pillagerKills = 0
+            vindicatorKills = 0
+            ravagerKills = 0
+            witchKills = 0
+            evokerKills = 0
+          }
+
+          if (RavenStats['minecraft:killed_by'] !== undefined) {
+            killedByPlayer = (RavenStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+          } else {
+            killedByPlayer = 0
+          }
+
+
+          const MiscEmbedPageOne = new MessageEmbed()
+
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+            .setColor(colors.DEFAULT)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .addFields({
+              name: `${McEmotes.Villager} Villagers interactions`,
+              value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+              inline: true
+            }, {
+              name: `${McEmotes.Chicken} Animals bred`,
+              value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+              inline: true
+            }, {
+              name: `${McEmotes.N_Sword} Damage stats`,
+              value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+              inline: false
+            }, {
+              name: `${McEmotes.Pillager} Raid stats`,
+              value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+              inline: false
+            })
+            .setFooter({
+              text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+              iconURL: interaction.user.displayAvatarURL()
+            })
+            .setTimestamp()
+
+          await interaction.editReply({
+            embeds: [MiscEmbedPageOne],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'mombar') {
+
+          if (mombarStats['minecraft:custom'] !== undefined) {
+            tradedC = (mombarStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+            talkedToVillager = (mombarStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+            animalsBred = (mombarStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+            damageDelt = (mombarStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+            damageTaken = (mombarStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+            playersKilled = (mombarStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+            deathsc = (mombarStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+            raidWin = (mombarStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+            raidTriggered = (mombarStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+          } else {
+            tradedC = 0
+            talkedToVillager = 0
+            animalsBred = 0
+            damageDelt = 0
+            damageTaken = 0
+            playersKilled = 0
+            deathsc = 0
+            raidWin = 0
+            raidTriggered = 0
+          }
+
+          if (mombarStats['minecraft:custom'] !== undefined) {
+            timeSinceDeathS = Number(mombarStats['minecraft:custom']['minecraft:time_since_death'])
+          } else {
+            timeSinceDeathS = 0
+          }
+          const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+          if (mombarStats['minecraft:killed'] !== undefined) {
+            pillagerKills = (mombarStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+            vindicatorKills = (mombarStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+            ravagerKills = (mombarStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+            witchKills = (mombarStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+            evokerKills = (mombarStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+          } else {
+            pillagerKills = 0
+            vindicatorKills = 0
+            ravagerKills = 0
+            witchKills = 0
+            evokerKills = 0
+          }
+
+          if (mombarStats['minecraft:killed_by'] !== undefined) {
+            killedByPlayer = (mombarStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+          } else {
+            killedByPlayer = 0
+          }
+
+
+          const MiscEmbedPageOne = new MessageEmbed()
+
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+            .setColor(colors.DEFAULT)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .addFields({
+              name: `${McEmotes.Villager} Villagers interactions`,
+              value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+              inline: true
+            }, {
+              name: `${McEmotes.Chicken} Animals bred`,
+              value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+              inline: true
+            }, {
+              name: `${McEmotes.N_Sword} Damage stats`,
+              value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+              inline: false
+            }, {
+              name: `${McEmotes.Pillager} Raid stats`,
+              value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+              inline: false
+            })
+            .setFooter({
+              text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+              iconURL: interaction.user.displayAvatarURL()
+            })
+            .setTimestamp()
+
+          await interaction.editReply({
+            embeds: [MiscEmbedPageOne],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'eboy') {
+
+          if (eBoyStats['minecraft:custom'] !== undefined) {
+            tradedC = (eBoyStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+            talkedToVillager = (eBoyStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+            animalsBred = (eBoyStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+            damageDelt = (eBoyStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+            damageTaken = (eBoyStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+            playersKilled = (eBoyStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+            deathsc = (eBoyStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+            raidWin = (eBoyStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+            raidTriggered = (eBoyStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+          } else {
+            tradedC = 0
+            talkedToVillager = 0
+            animalsBred = 0
+            damageDelt = 0
+            damageTaken = 0
+            playersKilled = 0
+            deathsc = 0
+            raidWin = 0
+            raidTriggered = 0
+          }
+
+          if (eBoyStats['minecraft:custom'] !== undefined) {
+            timeSinceDeathS = Number(eBoyStats['minecraft:custom']['minecraft:time_since_death'])
+          } else {
+            timeSinceDeathS = 0
+          }
+          const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+          if (eBoyStats['minecraft:killed'] !== undefined) {
+            pillagerKills = (eBoyStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+            vindicatorKills = (eBoyStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+            ravagerKills = (eBoyStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+            witchKills = (eBoyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+            evokerKills = (eBoyStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+          } else {
+            pillagerKills = 0
+            vindicatorKills = 0
+            ravagerKills = 0
+            witchKills = 0
+            evokerKills = 0
+          }
+
+          if (eBoyStats['minecraft:killed_by'] !== undefined) {
+            killedByPlayer = (eBoyStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+          } else {
+            killedByPlayer = 0
+          }
+
+
+          const MiscEmbedPageOne = new MessageEmbed()
+
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+            .setColor(colors.DEFAULT)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .addFields({
+              name: `${McEmotes.Villager} Villagers interactions`,
+              value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+              inline: true
+            }, {
+              name: `${McEmotes.Chicken} Animals bred`,
+              value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+              inline: true
+            }, {
+              name: `${McEmotes.N_Sword} Damage stats`,
+              value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+              inline: false
+            }, {
+              name: `${McEmotes.Pillager} Raid stats`,
+              value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+              inline: false
+            })
+            .setFooter({
+              text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+              iconURL: interaction.user.displayAvatarURL()
+            })
+            .setTimestamp()
+
+          await interaction.editReply({
+            embeds: [MiscEmbedPageOne],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'samy') {
+
+          if (SamyStats['minecraft:custom'] !== undefined) {
+            tradedC = (SamyStats['minecraft:custom']['minecraft:traded_with_villager'] ?? "0").toLocaleString()
+            talkedToVillager = (SamyStats['minecraft:custom']['minecraft:talked_to_villager'] ?? '0').toLocaleString()
+            animalsBred = (SamyStats['minecraft:custom']['minecraft:animals_bred'] ?? '0').toLocaleString()
+            damageDelt = (SamyStats['minecraft:custom']['minecraft:damage_dealt'] ?? '0').toLocaleString()
+            damageTaken = (SamyStats['minecraft:custom']['minecraft:damage_taken'] ?? '0').toLocaleString()
+            playersKilled = (SamyStats['minecraft:custom']['minecraft:player_kills'] ?? '0').toLocaleString()
+            deathsc = (SamyStats['minecraft:custom']['minecraft:deaths'] ?? '0').toLocaleString()
+            raidWin = (SamyStats['minecraft:custom']['minecraft:raid_win'] ?? '0').toLocaleString()
+            raidTriggered = (SamyStats['minecraft:custom']['minecraft:raid_trigger'] ?? '0').toLocaleString()
+          } else {
+            tradedC = 0
+            talkedToVillager = 0
+            animalsBred = 0
+            damageDelt = 0
+            damageTaken = 0
+            playersKilled = 0
+            deathsc = 0
+            raidWin = 0
+            raidTriggered = 0
+          }
+
+          if (SamyStats['minecraft:custom'] !== undefined) {
+            timeSinceDeathS = Number(SamyStats['minecraft:custom']['minecraft:time_since_death'])
+          } else {
+            timeSinceDeathS = 0
+          }
+          const timeSinceDeathM = (timeSinceDeathS / 60).toFixed(2)
+
+
+
+          if (SamyStats['minecraft:killed'] !== undefined) {
+            pillagerKills = (SamyStats['minecraft:killed']['minecraft:pillager'] ?? '0').toLocaleString()
+            vindicatorKills = (SamyStats['minecraft:killed']['minecraft:vindicator'] ?? '0').toLocaleString()
+            ravagerKills = (SamyStats['minecraft:killed']['minecraft:ravager'] ?? '0').toLocaleString()
+            witchKills = (SamyStats['minecraft:killed']['minecraft:witch'] ?? '0').toLocaleString()
+            evokerKills = (SamyStats['minecraft:killed']['minecraft:evoker'] ?? '0').toLocaleString()
+          } else {
+            pillagerKills = 0
+            vindicatorKills = 0
+            ravagerKills = 0
+            witchKills = 0
+            evokerKills = 0
+          }
+
+          if (SamyStats['minecraft:killed_by'] !== undefined) {
+            killedByPlayer = (SamyStats['minecraft:killed_by']['minecraft:player'] ?? '0').toLocaleString()
+          } else {
+            killedByPlayer = 0
+          }
+
+
+          const MiscEmbedPageOne = new MessageEmbed()
+
+            .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+            .setColor(colors.DEFAULT)
+            .setDescription(`User stats for ${GamerTag} || Misc, Page One, [More Info about these stats](${'https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names'})`)
+            .addFields({
+              name: `${McEmotes.Villager} Villagers interactions`,
+              value: `**Traded > ${tradedC}**\n**Talked to > ${talkedToVillager}**`,
+              inline: true
+            }, {
+              name: `${McEmotes.Chicken} Animals bred`,
+              value: `**Total > ${animalsBred}**\n**The number of times the player bred two mobs**`,
+              inline: true
+            }, {
+              name: `${McEmotes.N_Sword} Damage stats`,
+              value: `**Damage Delt > ${damageDelt}**\n**Damage Taken > ${damageTaken}**\n**Players killed > ${playersKilled}**\n**Killed by player > ${killedByPlayer}**\n**Total deaths > ${deathsc}**\n**Time since last death > ${timeSinceDeathM} min**`,
+              inline: false
+            }, {
+              name: `${McEmotes.Pillager} Raid stats`,
+              value: `**Triggered > ${raidTriggered}**\n**Wins > ${raidWin}**\n**Raid mob kills:\n**Pillager: ${pillagerKills}\nVindicator: ${vindicatorKills}\nRavager: ${ravagerKills}\nWitch: ${witchKills}\nEvoker: ${evokerKills}`,
+              inline: false
+            })
+            .setFooter({
+              text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+              iconURL: interaction.user.displayAvatarURL()
+            })
+            .setTimestamp()
+
+          await interaction.editReply({
+            embeds: [MiscEmbedPageOne],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
           })
 
         }
 
+      } else if (i.customId === 'bosses') {
+
+        if (target === 'Bunny') {
+
+          if (BunnyStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (BunnyStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (BunnyStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (BunnyStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+  
+          if (BunnyStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (BunnyStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (BunnyStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (BunnyStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+
+          if (BunnyStats['minecraft:mined'] !== undefined) {
+            SoulSand = (BunnyStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (BunnyStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (BunnyStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Boda') {
+
+          if (BodaStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (BodaStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (BodaStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (BodaStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (BodaStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (BodaStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (BodaStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (BodaStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (BodaStats['minecraft:mined'] !== undefined) {
+            SoulSand = (BodaStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (BodaStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (BodaStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Yoda') {
+
+          if (YehiaStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (YehiaStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (YehiaStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (YehiaStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (YehiaStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (YehiaStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (YehiaStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (YehiaStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (YehiaStats['minecraft:mined'] !== undefined) {
+            SoulSand = (YehiaStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (YehiaStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (YehiaStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Ayato') {
+
+          if (AyatoStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (AyatoStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (AyatoStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (AyatoStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (AyatoStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (AyatoStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (AyatoStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (AyatoStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (AyatoStats['minecraft:mined'] !== undefined) {
+            SoulSand = (AyatoStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (AyatoStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (AyatoStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Grep') {
+
+          if (GrepStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (GrepStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (GrepStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (GrepStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (GrepStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (GrepStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (GrepStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (GrepStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (GrepStats['minecraft:mined'] !== undefined) {
+            SoulSand = (GrepStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (GrepStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (GrepStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Majkor') {
+
+          if (MajkorStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (MajkorStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (MajkorStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (MajkorStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (MajkorStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (MajkorStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (MajkorStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (MajkorStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (MajkorStats['minecraft:mined'] !== undefined) {
+            SoulSand = (MajkorStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (MajkorStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (MajkorStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'Wael') {
+
+          if (WaelStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (WaelStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (WaelStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (WaelStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (WaelStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (WaelStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (WaelStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (WaelStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (WaelStats['minecraft:mined'] !== undefined) {
+            SoulSand = (WaelStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (WaelStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (WaelStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'hazem') {
+
+          if (RavenStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (RavenStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (RavenStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (RavenStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (RavenStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (RavenStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (RavenStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (RavenStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (RavenStats['minecraft:mined'] !== undefined) {
+            SoulSand = (RavenStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (RavenStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (RavenStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'mombar') {
+
+          if (mombarStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (mombarStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (mombarStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (mombarStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (mombarStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (mombarStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (mombarStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (mombarStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (mombarStats['minecraft:mined'] !== undefined) {
+            SoulSand = (mombarStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (mombarStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (mombarStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'eboy') {
+
+          if (eBoyStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (eBoyStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (eBoyStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (eBoyStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (eBoyStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (eBoyStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (eBoyStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (eBoyStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (eBoyStats['minecraft:mined'] !== undefined) {
+            SoulSand = (eBoyStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (eBoyStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (eBoyStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        } else if (target === 'samy') {
+
+          if (SamyStats['minecraft:killed'] !== undefined) {
+            EnderDragonK = (SamyStats['minecraft:killed']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherK = (SamyStats['minecraft:killed']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianK = (SamyStats['minecraft:killed']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          } else {
+            EnderDragonK = 0
+            WitherK = 0
+            elderGuardianK = 0
+          }
+        
+          if (SamyStats['minecraft:killed_by'] !== undefined) {
+            EnderDragonBy = (SamyStats['minecraft:killed_by']['minecraft:ender_dragon'] ?? '0').toLocaleString()
+            WitherBy = (SamyStats['minecraft:killed_by']['minecraft:wither'] ?? '0').toLocaleString()
+            elderGuardianBy = (SamyStats['minecraft:killed_by']['minecraft:elder_guardian'] ?? '0').toLocaleString()
+          }
+        
+          if (SamyStats['minecraft:mined'] !== undefined) {
+            SoulSand = (SamyStats['minecraft:mined']['minecraft:soul_sand'] ?? '0').toLocaleString()
+          } else {
+            SoulSand = 0
+          }
+          if (SamyStats['minecraft:picked_up'] !== undefined) {
+            witherSkull = (SamyStats['minecraft:picked_up']['minecraft:wither_skeleton_skull'] ?? '0').toLocaleString()
+          } else {
+            witherSkull = 0
+          }
+        
+          const BossedE = new MessageEmbed()
+          .setTitle(`HamadaCraft user stats for ${GamerTag}`)
+          .setColor(colors.DEFAULT)
+          .setDescription(`User stats for ${GamerTag} || Bosses & Mini-bosses`)
+          .addFields({
+            name: `${McEmotes.Dragon} EnderDragon`,
+            value: `**Killed > ${EnderDragonK}**\n**Killed by > ${EnderDragonBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.Wither} Wither`,
+            value: `**Killed > ${WitherK}**\n**Killed by > ${WitherBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.ElderGuardian} Elder Guardian`,
+            value: `**Killed > ${elderGuardianK}**\n**Killed by > ${elderGuardianBy}**`,
+            inline: true
+          }, {
+            name: `${McEmotes.SoulSand} Soul Sand Mined`,
+            value: `**Total > ${SoulSand}**`
+          }, {
+            name: `${McEmotes.WitherSkull} Wither Skull`,
+            value: `**Total > ${witherSkull}**`
+          })
+          .setFooter({
+            text: `HamadaCraft stats powered by GBF, Laucnhed by ${interaction.user.username}`,
+            iconURL: interaction.user.displayAvatarURL()
+          })
+          .setTimestamp()
+        
+          await interaction.editReply({
+            embeds: [BossedE],
+            components: [pageOneRow, goBackMisc, CloseMenuR]
+          })
+
+        }
 
       }
     })
