@@ -1,5 +1,5 @@
 # HamadaCraft-MC-Bot
-Stats and leaderboard bot for HamadaCraft, powered by GBF
+>Stats and leaderboard bot for HamadaCraft, powered by GBF
 
 
 Features: 
@@ -12,7 +12,7 @@ What does this rep. **not** include:
 - config.json file
 - stats file and userCache 
 
-The handler is private and part of GBF 
+>The handler is private and part of GBF 
 
 For more info about Minecraft statics [Click me](https://minecraft.fandom.com/wiki/Statistics#List_of_custom_statistic_names)
 
