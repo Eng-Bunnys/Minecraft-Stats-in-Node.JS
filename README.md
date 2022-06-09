@@ -1,4 +1,5 @@
 # HamadaCraft-MC-Bot
+## I am fully aware this code is ass
 >Stats and leaderboard bot for HamadaCraft, powered by GBF
 
 
