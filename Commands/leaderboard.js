@@ -17,3 +17,8 @@
 
                 leaderboard += `**${counter + 1}. ${userNameNoTag}** with **${fieldName.toLocaleString()}**\n`
             }
+
+//This is the JavaScript solution to sorting and making a leaderboard, for larger files it's best to use mongoDB query
+//https://www.mongodb.com/docs/manual/reference/method/cursor.sort/
+//https://www.mongodb.com/docs/manual/reference/operator/aggregation/sort/
+//https://www.mongodb.com/docs/manual/reference/operator/meta/orderby/
